@@ -9,7 +9,10 @@ export default class Main extends Component{
     super(props)
     this.state = {
       input: "",
-      typingText: "A teacher's professional duties may extend beyond formal teaching. Outside of the classroom teachers may accompany students on field trips, supervise study halls, help with the organization of school functions, and serve as supervisors for extracurricular activities. In some education systems, teachers may have responsibility for student discipline."
+      typingText: "student test.",
+      started: false,
+      seconds: 0,
+      wpm: 0
     };
   }
 
@@ -24,16 +27,20 @@ export default class Main extends Component{
     if(data === "Backspace" && this.state.input.length < this.state.typingText.length){
       this.setState({
         input: this.state.input.slice(0, this.state.input.length - 1)
-      }, () => console.log(this.state.input));
+      });
 
       document.getElementsByClassName("letter").item(this.state.input.length + 1).style.backgroundColor = "transparent";
       document.getElementsByClassName("letter").item(this.state.input.length).style.backgroundColor = "#6200EE";
     }
     else if(data.length === 1){
-
+      if(this.state.input.length === 0){
+        this.setState({
+          started: true
+        }, () => this.startTimer());
+      }
       this.setState({
         input: this.state.input + data
-      }, () => console.log(this.state.input));
+      });
 
       let letter = document.getElementsByClassName("letter");
 
@@ -45,19 +52,40 @@ export default class Main extends Component{
         else{
           letter.item(this.state.input.length).style.backgroundColor = "#6200EE";
           letter.item(this.state.input.length - 1).style.backgroundColor = "red";
-          letter.item(this.state.input.length - 1).style.borderRadius = "0px";
         }
       }
       else{
-        letter.item(this.state.input.length - 1).style.backgroundColor = "transparent";
+        this.setState({started: false})
       }
-
       if(this.state.input.length === this.state.typingText.length && this.state.input[this.state.input.length - 1] !== this.state.typingText[this.state.input.length - 1]){
         letter.item(this.state.input.length - 1).style.backgroundColor = "red";
       }
-
-      
     }
+
+    let errors = 0;
+    for(let i = 0; i < this.state.input.length; i++){
+      if(this.state.input[i] !== this.state.typingText[i]){
+        errors++;
+      }
+    }
+    this.setState({errors: errors});
+  }
+
+  startTimer(){
+    console.log(this.state.started)
+    let timer = setInterval(() => {
+    this.setState({
+        seconds: this.state.seconds + 0.01,
+        wpm: (this.state.input.length/5)/(this.state.seconds/60),
+        errorPercentage: ((this.state.input.length - this.state.errors)/this.state.input.length)*100
+      }, () => console.log(this.state.errorPercentage))
+      
+      if(this.state.started === false){
+        clearInterval(timer);
+      }
+
+    }, 10);
+    
   }
 
   render(){
