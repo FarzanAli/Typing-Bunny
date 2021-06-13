@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Stats from './components/stats.js';
 import TypingBox from './components/typingBox.js';
 
 export default class Main extends Component{
@@ -9,10 +10,11 @@ export default class Main extends Component{
     super(props)
     this.state = {
       input: "",
-      typingText: "student test.",
-      started: false,
+      typingText: "the quick brown fox jumped over the lazy dog.",
+      runTimer: false,
       seconds: 0,
-      wpm: 0
+      wpm: 0,
+      accuracy: 0
     };
   }
 
@@ -32,10 +34,10 @@ export default class Main extends Component{
       document.getElementsByClassName("letter").item(this.state.input.length + 1).style.backgroundColor = "transparent";
       document.getElementsByClassName("letter").item(this.state.input.length).style.backgroundColor = "#6200EE";
     }
-    else if(data.length === 1){
+    else if(data.length === 1 && this.state.input.length < this.state.typingText.length){
       if(this.state.input.length === 0){
         this.setState({
-          started: true
+          runTimer: true
         }, () => this.startTimer());
       }
       this.setState({
@@ -55,7 +57,8 @@ export default class Main extends Component{
         }
       }
       else{
-        this.setState({started: false})
+        letter.item(this.state.input.length - 1).style.backgroundColor = "transparent";
+        this.setState({runTimer: false})
       }
       if(this.state.input.length === this.state.typingText.length && this.state.input[this.state.input.length - 1] !== this.state.typingText[this.state.input.length - 1]){
         letter.item(this.state.input.length - 1).style.backgroundColor = "red";
@@ -72,25 +75,27 @@ export default class Main extends Component{
   }
 
   startTimer(){
-    console.log(this.state.started)
     let timer = setInterval(() => {
-    this.setState({
-        seconds: this.state.seconds + 0.01,
-        wpm: (this.state.input.length/5)/(this.state.seconds/60),
-        errorPercentage: ((this.state.input.length - this.state.errors)/this.state.input.length)*100
-      }, () => console.log(this.state.errorPercentage))
-      
-      if(this.state.started === false){
-        clearInterval(timer);
-      }
+      this.setState({
+          seconds: this.state.seconds + 0.01,
+          wpm: ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60),
+          accuracy: ((this.state.input.length - this.state.errors)/this.state.input.length)*100
+        })
+        
+        if(this.state.runTimer === false){
+          clearInterval(timer);
+        }
 
-    }, 10);
-    
+      }, 10);
   }
 
   render(){
     return(
       <div className="main-content">
+        <Stats
+        wpm={this.state.wpm}
+        accuracy={this.state.accuracy}        
+        />
         <TypingBox
         typingText={this.state.typingText}
         />

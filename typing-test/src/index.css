@@ -3,25 +3,31 @@
 :root{
   --typing-box-width: 550px;
   --typing-box-height: 375px;
+  --page-color: rgb(18, 18, 18);
+  --shade-1: rgb(30, 30, 30);
 }
 
 body {
   font-family: 'Roboto Mono', monospace;
-  background-color: rgb(18, 18, 18);
+  background-color: var(--page-color);
+
+  display: flex;
+  justify-content: center;
 }
 
 .main-content{
   height: 500px;
   margin-top: 200px;
   display: flex;
-  justify-content: center;
+  flex-flow: column;
+  align-items: flex-end;
 }
 
 .typing-box{
   width: var(--typing-box-width);
   height: var(--typing-box-height);
   border-radius: 15px;
-  background-color: rgb(30, 30, 30);
+  background-color: var(--shade-1);
 }
 
 .typing-text{
@@ -40,5 +46,5 @@ body {
 .letter{
   display: inline-block;
   /* border-radius: 3px; */
-  /* padding: 1px; */
+  /* padding: 1px;  */
 }
