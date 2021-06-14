@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Stats from './components/stats.js';
