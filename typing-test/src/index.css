@@ -17,7 +17,7 @@ body {
 
 .main-content{
   height: 500px;
-  margin-top: 200px;
+  margin-top: 10vh;
   display: flex;
   flex-flow: column;
   align-items: flex-end;
@@ -26,7 +26,7 @@ body {
 .typing-box{
   width: var(--typing-box-width);
   height: var(--typing-box-height);
-  border-radius: 15px;
+  border-radius: 8px;
   background-color: var(--shade-1);
 }
 
@@ -34,17 +34,7 @@ body {
   padding: 20px;
   position: relative;
   width: calc(var(--typing-box-width) - 40px);
-  height: calc(var(--typing-box-width) - 20px);
+  height: auto;
   font-size: 20px;
   color: white;
-}
-
-.word{
-  display: inline-block;
-}
-
-.letter{
-  display: inline-block;
-  /* border-radius: 3px; */
-  /* padding: 1px;  */
 }

@@ -1,0 +1,26 @@
+.word{
+  display: inline-block;
+}
+
+.letter{
+  display: inline-block;
+  /* border-radius: 3px; */
+  /* padding: 1px;  */
+}
+
+.letter-active{
+  display: inline-block;
+  background-color: #6200EE;
+  /* color: rgb(119, 119, 119); */
+  /* animation: cursorBlinking 0.5s infinite; */
+}
+
+@keyframes cursorBlinking{
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.letter-error{
+  display: inline-block;
+  background-color: red;
+}

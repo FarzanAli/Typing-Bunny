@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Stats from './components/stats.js';
@@ -10,71 +10,17 @@ export default class Main extends Component{
     super(props)
     this.state = {
       input: "",
-      typingText: "the quick brown fox jumped over the lazy dog.",
+      typingText: "The quick brown fox jumped over the lazy dog.",
       runTimer: false,
       seconds: 0,
       wpm: 0,
-      accuracy: 0
+      accuracy: 0,
+      handledErrors: []
     };
   }
 
-  componentDidMount(){
-    document.addEventListener('keydown', (event) => {
-      this.keyboardInput(event.key)
-    });
-    document.getElementsByClassName("letter").item(0).style.backgroundColor = "#6200EE";
-  }
-
-  keyboardInput(data){
-    if(data === "Backspace" && this.state.input.length < this.state.typingText.length){
-      this.setState({
-        input: this.state.input.slice(0, this.state.input.length - 1)
-      });
-
-      document.getElementsByClassName("letter").item(this.state.input.length + 1).style.backgroundColor = "transparent";
-      document.getElementsByClassName("letter").item(this.state.input.length).style.backgroundColor = "#6200EE";
-    }
-    else if(data.length === 1 && this.state.input.length < this.state.typingText.length){
-      if(this.state.input.length === 0){
-        this.setState({
-          runTimer: true
-        }, () => this.startTimer());
-      }
-      this.setState({
-        input: this.state.input + data
-      });
-
-      let letter = document.getElementsByClassName("letter");
-
-      if(this.state.input.length < this.state.typingText.length){
-        if(this.state.input[this.state.input.length - 1] === this.state.typingText[this.state.input.length - 1]){
-          letter.item(this.state.input.length).style.backgroundColor = "#6200EE";
-          letter.item(this.state.input.length - 1).style.backgroundColor = "transparent";
-        }
-        else{
-          letter.item(this.state.input.length).style.backgroundColor = "#6200EE";
-          letter.item(this.state.input.length - 1).style.backgroundColor = "red";
-        }
-      }
-      else{
-        letter.item(this.state.input.length - 1).style.backgroundColor = "transparent";
-        this.setState({runTimer: false})
-      }
-      if(this.state.input.length === this.state.typingText.length && this.state.input[this.state.input.length - 1] !== this.state.typingText[this.state.input.length - 1]){
-        letter.item(this.state.input.length - 1).style.backgroundColor = "red";
-      }
-    }
-
-    let errors = 0;
-    for(let i = 0; i < this.state.input.length; i++){
-      if(this.state.input[i] !== this.state.typingText[i]){
-        errors++;
-      }
-    }
-    this.setState({errors: errors});
-  }
-
   startTimer(){
+
     let timer = setInterval(() => {
       this.setState({
           seconds: this.state.seconds + 0.01,
@@ -89,6 +35,39 @@ export default class Main extends Component{
       }, 10);
   }
 
+  toggleRunTimerCallback(){
+    this.setState({
+      runTimer: !this.state.runTimer
+    }, () => {
+      if(this.state.runTimer === true){
+        this.startTimer();
+      }
+    });
+  }
+
+  inputCallback(data){
+    if(data === "Backspace"){
+      this.setState({
+        input: this.state.input.slice(0, this.state.input.length - 1)
+      });
+    }
+    else{
+      this.setState({
+        input: this.state.input + data
+      });
+    }
+  }
+
+  errorsCallback(errors){
+    this.setState({errors: errors});
+  }
+
+  handledErrorsCallback(index){
+    let handledErrors = this.state.handledErrors;
+    handledErrors.push(index);
+    this.setState({handledErrors: handledErrors})
+  }
+
   render(){
     return(
       <div className="main-content">
@@ -97,7 +76,15 @@ export default class Main extends Component{
         accuracy={this.state.accuracy}        
         />
         <TypingBox
+        input={this.state.input}
         typingText={this.state.typingText}
+        seconds={this.state.seconds}
+        handledErrors={this.state.handledErrors}
+
+        toggleRunTimerCallback={this.toggleRunTimerCallback.bind(this)}
+        inputCallback={this.inputCallback.bind(this)}
+        errorsCallback={this.errorsCallback.bind(this)}
+        handledErrorsCallback={this.handledErrorsCallback.bind(this)}
         />
       </div>
     );

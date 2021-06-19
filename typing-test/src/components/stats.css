@@ -1,7 +1,7 @@
 .stats-container{
     width: 250px;
     height: 65px;
-    border-radius: 12px;
+    border-radius: 6px;
     background-color: var(--shade-1);
 
     margin-bottom: 10px;

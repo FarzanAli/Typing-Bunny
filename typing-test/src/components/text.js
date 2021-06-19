@@ -1,41 +1,143 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './text.css';
 
-export default class Text extends Component{
-    
-    render(){
-        let wordArray = [];
-        if(this.props.typingText.length === 1){
-          wordArray.push(this.props.typingText[0]);
-        }
-        else{
-          for(let i = 0; i < this.props.typingText.length; i++){
-            if(i === 0 || this.props.typingText[i] === " "){
-              if(this.props.typingText[i] === " "){i += 1;}
-              for(let j = i; j < this.props.typingText.length; j++){
-                if(this.props.typingText[j] === " " || j === this.props.typingText.length - 1){
-                  wordArray.push(this.props.typingText.slice(i, j + 1));
-                  i = j + 1;
-                }
-              }
-            }
+function Text(props) {
+
+  let wordArray = [];
+  if (props.typingText.length === 1) {
+    wordArray.push(props.typingText[0]);
+  }
+  else {
+    for (let i = 0; i < props.typingText.length; i++) {
+      if (i === 0 || props.typingText[i] === " ") {
+        if (props.typingText[i] === " ") { i += 1; }
+        for (let j = i; j < props.typingText.length; j++) {
+          if (props.typingText[j] === " " || j === props.typingText.length - 1) {
+            wordArray.push(props.typingText.slice(i, j + 1));
+            i = j + 1;
           }
         }
-
-        wordArray = wordArray.map((element, idx) => (
-            <div className="word" key={idx} id={idx}>
-              {
-                [...element].map((letter, idx) => (
-                  letter === " " ? (<div className="letter" key={idx}>&nbsp;</div>) :
-                  (<div className="letter" key={idx}>{letter}</div>)
-                ))
-              }
-            </div>
-        )); 
-        
-        return(
-            <div className="typing-text">
-                {wordArray}
-            </div>
-        );
+      }
     }
+  }
+
+  let mappedWordArray = wordArray.map((element, idx) => (
+    <div className="word" key={idx} id={idx}>
+      {
+        [...element].map((letter, idy) => (
+          idx === 0 && idy === 0 && props.input.length === 0 ? (<div className="letter-active" key={idy} id={idy}>{letter}</div>) :
+
+            letter === " " ? (<div className="letter" key={idy} id={idy}>&nbsp;</div>) :
+              (<div className="letter" key={idy} id={idy}>{letter}</div>)
+        ))
+      }
+    </div>
+  ));
+
+  if(props.input.length === 0 && document.getElementsByClassName("letter-active").length > 1){
+    document.getElementsByClassName("letter-active").item(1).className = "letter";
+  }
+  if (props.input.length > 0 && props.input.length < props.typingText.length) {
+    //cursor
+
+    //First Implementation
+    // if (document.getElementsByClassName("letter-active").length >= 1) {
+    //   document.getElementsByClassName("letter-active").item(0).className = "letter";
+    // }
+
+    // document.getElementsByClassName("letter").item(props.input.length - 
+    //   document.getElementsByClassName("letter-error").length).className = "letter-active";
+    
+
+    //Second Implementation
+    /*
+      Does not depend on "letter" classes to move cursor, instead depends on "word" class and indexes
+      through to put the cursor on the index that immediately follows whatever value input.length is.
+    */
+    let cursorIndex = 0;
+    for(let i = 0; i < wordArray.length; i++){
+      for(let j = 0; j < wordArray[i].length; j++){
+        if(cursorIndex === props.input.length){
+          //Fixes bug in which cursor leaves trail 1 letter activated when backspacing.
+          if(document.getElementsByClassName("letter-active")[1] !== undefined){
+            if(j < document.getElementsByClassName("letter-active")[1].id){
+              document.getElementsByClassName("letter-active")[1].className = "letter";
+            }
+            else if(j > document.getElementsByClassName("letter-active")[1].id){
+              document.getElementsByClassName("letter-active")[1].className = "letter";
+
+            }
+          }
+          if(document.getElementsByClassName("letter-active").length > 1){
+            for(let k = 0; k < document.getElementsByClassName("letter-active").length; k++){
+              if(j !== document.getElementsByClassName("letter-active").item(k).id){
+                document.getElementsByClassName("letter-active").item(k).className = "letter";
+              }
+            } 
+          }
+          document.getElementsByClassName("word").item(i).children[j].className = "letter-active"
+        }
+        cursorIndex++;
+      }
+    }
+    
+    //errors
+
+    //First implementation
+    // console.log(document.getElementsByClassName("letter"))
+    // if(document.getElementsByClassName("letter").item(props.input.length - document.getElementsByClassName("letter-error").length - 1).innerHTML !== props.input[props.input.length - 1]
+    // && props.handledErrors.includes(props.input.length - 1) === false
+    // && (document.getElementsByClassName("letter").item(props.input.length - document.getElementsByClassName("letter-error").length - 1).innerHTML.toString() === "&nbsp;" ?
+    // props.input[props.input.length - 1] !== " " ? true : false : true)){
+    //   document.getElementsByClassName("letter").item(props.input.length - 
+    //     document.getElementsByClassName("letter-error").length - 1).className = "letter-error";
+    //   props.handledErrorsCallback(props.input.length - 1);
+    // }
+
+
+    // && document.getElementsByClassName("word").item(i).children[j].innerHTML === "&nbsp;" ?
+    //       (props.input[current] === " " ? false: true): true
+
+    //Second implementation
+    let current = 0;
+    for(let i = 0; i < wordArray.length; i++){
+      for(let j = 0; j < wordArray[i].length; j++){
+        if(current < props.input.length){
+          if(document.getElementsByClassName("word").item(i).children[j].innerHTML === "&nbsp;" && props.input[current] !== " "){
+            document.getElementsByClassName("word").item(i).children[j].className = "letter-error";
+          }
+          else if(document.getElementsByClassName("word").item(i).children[j].innerHTML !== props.input[current]
+          && document.getElementsByClassName("word").item(i).children[j].innerHTML !== "&nbsp;"){
+            document.getElementsByClassName("word").item(i).children[j].className = "letter-error";
+          }
+        }
+        // if(current <= props.input.length && props.input[current] !== props.typingText[current] && props.handledErrors.includes(current) === false){
+        //   console.log("error")
+        //   document.getElementsByClassName("word").item(i).children[j].className = "letter-error";
+        //   props.handledErrorsCallback(current);
+        // }
+        current++;
+      }
+    }
+    
+  }
+  else if (props.input.length === props.typingText.length) {
+    if(props.input[props.input.length - 1] !== props.typingText[props.input.length - 1] && props.handledErrors.includes(props.input.length - 1) === false){
+      document.getElementsByClassName("letter-active").item(0).className = "letter-error"
+      props.handledErrorsCallback(props.input.length - 1);
+    }
+    else if(props.input[props.input.length - 1] === props.typingText[props.input.length - 1]){
+      document.getElementsByClassName("letter-active").item(0).style.backgroundColor = "gray";
+      document.getElementsByClassName("letter-active").item(0).style.animation = "none";
+    }
+  }
+
+  return (
+    <div className="typing-text">
+      {mappedWordArray}
+    </div>
+  );
+
 }
+
+export default Text;
