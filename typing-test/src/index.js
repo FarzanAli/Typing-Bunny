@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Stats from './components/stats.js';
+import Header from './components/header.js';
 import TypingBox from './components/typingBox.js';
 
 export default class Main extends Component{
@@ -68,13 +68,21 @@ export default class Main extends Component{
     this.setState({handledErrors: handledErrors})
   }
 
+  handlePasteCallback(typingText){
+    this.setState({
+      typingText: typingText
+    }, () => console.log(this.state.typingText))
+  }
+
   render(){
     return(
       <div className="main-content">
-        <Stats
+        <Header
         wpm={this.state.wpm}
-        accuracy={this.state.accuracy}        
+        accuracy={this.state.accuracy}
+        handlePasteCallback={this.handlePasteCallback.bind(this)}
         />
+        
         <TypingBox
         input={this.state.input}
         typingText={this.state.typingText}

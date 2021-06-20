@@ -1,0 +1,30 @@
+.header-container{
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+}
+
+.stats-container{
+  width: 250px;
+  border-radius: 6px;
+  background-color: var(--shade-1);
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+
+.paste-container{
+  width: 60px;
+  height: 60px;
+  background-color: var(--shade-1);
+
+  border-radius: 6px;
+}
+
+.paste-container:hover{
+  background-color: rgba(255, 255, 255, 0.13);
+  transition: background-color 0.2s;
+}
