@@ -24,7 +24,8 @@ export default class Main extends Component{
     let timer = setInterval(() => {
       this.setState({
           seconds: this.state.seconds + 0.01,
-          wpm: ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60),
+          wpm: ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60) === Infinity ? 999:
+               ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60),
           accuracy: ((this.state.input.length - this.state.errors)/this.state.input.length)*100
         })
         

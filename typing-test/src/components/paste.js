@@ -10,7 +10,9 @@ export default class Paste extends Component {
   async paste(input) {
     const text = await navigator.clipboard.readText();
     input.value = text;
-    this.props.handlePasteCallback(input.value);
+    if(input.value.length !== 0){
+      this.props.handlePasteCallback(input.value);
+    }
   }
   render() {
     return (
