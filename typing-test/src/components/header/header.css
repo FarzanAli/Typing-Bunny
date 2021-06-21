@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+:root{
+  --hover-color: rgba(255, 255, 255, 0.13);
+  --icon-color: rgba(255, 255, 255, 0.5);
+}
+
 .header-container{
   display: flex;
   justify-content: space-between;
@@ -8,7 +13,7 @@
 }
 
 .stats-container{
-  width: 210px;
+  width: 250px;
   border-radius: 6px;
 
   display: flex;
@@ -18,43 +23,64 @@
 }
 
 .paste-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: 60px;
   height: 60px;
   background-color: var(--shade-1);
-
   border-radius: 6px;
 }
 
 .paste-container:hover{
-  background-color: rgba(255, 255, 255, 0.13);
+  background-color: var(--hover-color);
+  transition: background-color 0.2s;
+}
+
+.next-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  margin-left: 70px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--shade-1);
+  border-radius: 6px;
+}
+
+.next-container:hover{
+  background-color: var(--hover-color);
   transition: background-color 0.2s;
 }
 
 .wpm-container{
-  /* font-family: 'Roboto', sans-serif;
-  font-weight: 600; */
-  font-size: 15px;
+  /* font-family: 'Roboto', sans-serif; */
+  font-family: 'Montserrat', sans-serif;
+  /* font-weight: 600; */
+  font-size: 14px;
   /* background-color: gray; */
-  width: 70px;
+  /* width: 85px; */
   display: inline-block;
 }
 
 .accuracy-container{
-  /* font-family: 'Roboto', sans-serif;
-  font-weight: 600; */
+  font-family: 'Montserrat', sans-serif;
+  /* font-weight: 600; */
   font-size: 14px;
   /* background-color: gray; */
-  width: 100px;
+  /* width: 100px; */
   display: inline-block;
 }
 
 .wpm{
   background-color: var(--shade-1);
-  margin-top: -20px;
-  margin-left: 18px;
+  margin-top: -15px;
+  margin-left: 36px;
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
-  
 
   width: 60px;
   height: 60px;
@@ -66,8 +92,8 @@
 
 .accuracy{
   background-color: var(--shade-1);
-  margin-top: -20px;
-  margin-left: 58px;
+  margin-top: -15px;
+  margin-left: 63px;
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
 

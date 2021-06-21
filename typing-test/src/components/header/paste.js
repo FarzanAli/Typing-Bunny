@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { FaPaste } from 'react-icons/fa';
 export default class Paste extends Component {
 
   constructor(props){
@@ -17,6 +17,7 @@ export default class Paste extends Component {
   render() {
     return (
       <div className="paste-container" onClick={this.paste}>
+        <FaPaste style={{width: `65%`,height:`65%`, color: `var(--icon-color)`}}/>
       </div>
     );
   }

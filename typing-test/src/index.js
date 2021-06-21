@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Header from './components/header.js';
-import TypingBox from './components/typingBox.js';
+import Header from './components/header/header.js';
+import TypingBox from './components/typing-box/typingBox.js';
 
 export default class Main extends Component{
   
@@ -10,13 +10,20 @@ export default class Main extends Component{
     super(props)
     this.state = {
       input: "",
-      typingText: "The quick brown fox jumped over the lazy dog.",
+      typingText: " ",
+      sampleTexts: ["The quick brown fox jumped over the lazy dog.",
+                    "“Do not go gentle into that good night; Old age should burn and rave at close of day. Rage, rage against the dying of the light.” —Dylan Thomas, as quoted by Professor Brand"],
+      sampleTextsIndex: 0,
       runTimer: false,
       seconds: 0,
       wpm: 0,
       accuracy: 0,
       handledErrors: []
     };
+  }
+
+  componentDidMount(){
+    this.handleNextTextCallback();
   }
 
   startTimer(){
@@ -75,6 +82,21 @@ export default class Main extends Component{
     }, () => console.log(this.state.typingText))
   }
 
+  handleNextTextCallback(){
+    if(this.state.typingText.length === 0){
+      this.setState({
+        typingText: this.state.sampleTexts[0]
+      });
+    }
+    else{
+      console.log(this.state.sampleTextsIndex)
+      this.setState({
+        typingText: this.state.sampleTexts[this.state.sampleTextsIndex],
+        sampleTextsIndex: (this.state.sampleTextsIndex === this.state.sampleTexts.length - 1) ? 0 : this.state.sampleTextsIndex + 1
+      });
+    }
+  }
+
   render(){
     return(
       <div className="main-content">
@@ -82,6 +104,7 @@ export default class Main extends Component{
         wpm={this.state.wpm}
         accuracy={this.state.accuracy}
         handlePasteCallback={this.handlePasteCallback.bind(this)}
+        handleNextTextCallback={this.handleNextTextCallback.bind(this)}
         />
         
         <TypingBox
