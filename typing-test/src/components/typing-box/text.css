@@ -22,5 +22,10 @@
 
 .letter-error{
   display: inline-block;
-  background-color: red;
+  background-color: rgb(255, 52, 52);
+}
+
+.letter-finished{
+  display: inline-block;
+  background-color: gray;
 }

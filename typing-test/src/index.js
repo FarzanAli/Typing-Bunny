@@ -9,10 +9,11 @@ export default class Main extends Component{
   constructor(props){
     super(props)
     this.state = {
-      input: "",
-      typingText: " ",
-      sampleTexts: ["The quick brown fox jumped over the lazy dog.",
-                    "“Do not go gentle into that good night; Old age should burn and rave at close of day. Rage, rage against the dying of the light.” —Dylan Thomas, as quoted by Professor Brand"],
+      input: ``,
+      typingText: ` `,
+      sampleTexts: [`Sample text.`,
+                    `The quick brown fox jumped over the lazy dog.`,
+                    `"Do not go gentle into that good night; Old age should burn and rave at close of day. Rage, rage against the dying of the light." —Dylan Thomas, as quoted by Professor Brand`],
       sampleTextsIndex: 0,
       runTimer: false,
       seconds: 0,
@@ -24,6 +25,28 @@ export default class Main extends Component{
 
   componentDidMount(){
     this.handleNextTextCallback();
+  }
+
+  resetTest(){
+    this.setState({
+      input: ``,
+      runTimer: false,
+      seconds: 0,
+      wpm: 0,
+      accuracy: 0,
+      errors: 0,
+      handledErrors: [],
+    });
+    while(document.getElementsByClassName("letter-active").length > 0) {
+      document.getElementsByClassName("letter-active").item(0).className = "letter";
+    }
+    while(document.getElementsByClassName("letter-error").length > 0){
+      document.getElementsByClassName("letter-error").item(0).className = "letter";
+    }
+    while(document.getElementsByClassName("letter-finished").length > 0){
+      document.getElementsByClassName("letter-finished").item(0).className = "letter";
+    }
+    document.getElementsByClassName("word").item(0).children[0].className = "letter-active"
   }
 
   startTimer(){
@@ -43,9 +66,9 @@ export default class Main extends Component{
       }, 10);
   }
 
-  toggleRunTimerCallback(){
+  toggleRunTimerCallback(bool){
     this.setState({
-      runTimer: !this.state.runTimer
+      runTimer: bool
     }, () => {
       if(this.state.runTimer === true){
         this.startTimer();
@@ -79,7 +102,8 @@ export default class Main extends Component{
   handlePasteCallback(typingText){
     this.setState({
       typingText: typingText
-    }, () => console.log(this.state.typingText))
+    });
+    this.resetTest();
   }
 
   handleNextTextCallback(){
@@ -89,12 +113,12 @@ export default class Main extends Component{
       });
     }
     else{
-      console.log(this.state.sampleTextsIndex)
       this.setState({
         typingText: this.state.sampleTexts[this.state.sampleTextsIndex],
         sampleTextsIndex: (this.state.sampleTextsIndex === this.state.sampleTexts.length - 1) ? 0 : this.state.sampleTextsIndex + 1
       });
     }
+    this.resetTest();
   }
 
   render(){
@@ -112,6 +136,7 @@ export default class Main extends Component{
         typingText={this.state.typingText}
         seconds={this.state.seconds}
         handledErrors={this.state.handledErrors}
+        runTimer={this.state.runTimer}
 
         toggleRunTimerCallback={this.toggleRunTimerCallback.bind(this)}
         inputCallback={this.inputCallback.bind(this)}

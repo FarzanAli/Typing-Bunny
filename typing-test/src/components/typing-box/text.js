@@ -34,21 +34,11 @@ function Text(props) {
     </div>
   ));
 
-  if(props.input.length === 0 && document.getElementsByClassName("letter-active").length > 1){
+  if(props.input.length === 0 && document.getElementsByClassName("letter-active").length > 1 && props.runTimer){
     document.getElementsByClassName("letter-active").item(1).className = "letter";
   }
-  if (props.input.length > 0 && props.input.length < props.typingText.length) {
+  else if (props.input.length > 0 && props.input.length < props.typingText.length && props.runTimer) {
     //cursor
-
-    //First Implementation
-    // if (document.getElementsByClassName("letter-active").length >= 1) {
-    //   document.getElementsByClassName("letter-active").item(0).className = "letter";
-    // }
-
-    // document.getElementsByClassName("letter").item(props.input.length - 
-    //   document.getElementsByClassName("letter-error").length).className = "letter-active";
-    
-
     //Second Implementation
     /*
       Does not depend on "letter" classes to move cursor, instead depends on "word" class and indexes
@@ -75,29 +65,15 @@ function Text(props) {
               }
             } 
           }
-          document.getElementsByClassName("word").item(i).children[j].className = "letter-active"
+
+          document.getElementsByClassName("word").item(i).children[j].className = "letter-active";
+          
         }
         cursorIndex++;
       }
     }
     
     //errors
-
-    //First implementation
-    // console.log(document.getElementsByClassName("letter"))
-    // if(document.getElementsByClassName("letter").item(props.input.length - document.getElementsByClassName("letter-error").length - 1).innerHTML !== props.input[props.input.length - 1]
-    // && props.handledErrors.includes(props.input.length - 1) === false
-    // && (document.getElementsByClassName("letter").item(props.input.length - document.getElementsByClassName("letter-error").length - 1).innerHTML.toString() === "&nbsp;" ?
-    // props.input[props.input.length - 1] !== " " ? true : false : true)){
-    //   document.getElementsByClassName("letter").item(props.input.length - 
-    //     document.getElementsByClassName("letter-error").length - 1).className = "letter-error";
-    //   props.handledErrorsCallback(props.input.length - 1);
-    // }
-
-
-    // && document.getElementsByClassName("word").item(i).children[j].innerHTML === "&nbsp;" ?
-    //       (props.input[current] === " " ? false: true): true
-
     //Second implementation
     let current = 0;
     for(let i = 0; i < wordArray.length; i++){
@@ -121,17 +97,15 @@ function Text(props) {
     }
     
   }
-  else if (props.input.length === props.typingText.length) {
+  else if (props.input.length === props.typingText.length && props.runTimer === true) {
     if(props.input[props.input.length - 1] !== props.typingText[props.input.length - 1] && props.handledErrors.includes(props.input.length - 1) === false){
       document.getElementsByClassName("letter-active").item(0).className = "letter-error"
       props.handledErrorsCallback(props.input.length - 1);
     }
     else if(props.input[props.input.length - 1] === props.typingText[props.input.length - 1]){
-      document.getElementsByClassName("letter-active").item(0).style.backgroundColor = "gray";
-      document.getElementsByClassName("letter-active").item(0).style.animation = "none";
+      document.getElementsByClassName("letter-active").item(0).className = "letter-finished";
     }
   }
-
   return (
     <div className="typing-text">
       {mappedWordArray}
