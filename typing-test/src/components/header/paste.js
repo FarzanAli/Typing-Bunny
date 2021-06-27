@@ -17,7 +17,7 @@ export default class Paste extends Component {
   render() {
     return (
       <div className="paste-container" onClick={this.paste}>
-        <FaPaste style={{width: `65%`,height:`65%`, color: `var(--icon-color)`}}/>
+        <FaPaste style={{width: `65%`,height:`65%`, color: `#868686`}}/>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import ToggleLight from './components/toggleLight.js';
 import Header from './components/header/header.js';
 import TypingBox from './components/typing-box/typingBox.js';
 
@@ -11,9 +12,8 @@ export default class Main extends Component{
     this.state = {
       input: ``,
       typingText: ` `,
-      sampleTexts: [`Sample text.`,
-                    `The quick brown fox jumped over the lazy dog.`,
-                    `"Do not go gentle into that good night; Old age should burn and rave at close of day. Rage, rage against the dying of the light." -Dylan Thomas, as quoted by Professor Brand`,
+      sampleTexts: [`"Do not go gentle into that good night; Old age should burn and rave at close of day. Rage, rage against the dying of the light." -Dylan Thomas, as quoted by Professor Brand`,
+                    `"We are what we repeatedly do. Excellence, then, is not an act, but a habit" - Aristotle`,
                     `"Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking." -Steve Jobs`],
       sampleTextsIndex: 0,
       runTimer: false,
@@ -59,7 +59,7 @@ export default class Main extends Component{
                ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60),
           accuracy: ((this.state.input.length - this.state.errors)/this.state.input.length)*100
         })
-        
+
         if(this.state.runTimer === false){
           clearInterval(timer);
         }
@@ -121,30 +121,42 @@ export default class Main extends Component{
     }
     this.resetTest();
   }
+  // 'rgb(34, 34, 34);'
+  darkModeCallback(){
+    
+    // document.documentElement.setAttribute("style", "--shade-1: rgb(34, 34, 34);");
+    // let rs = getComputedStyle(r)
+    // console.log(rs.getPropertyValue('--page-color'))
+  }
 
   render(){
     return(
-      <div className="main-content">
-        <Header
-        wpm={this.state.wpm}
-        accuracy={this.state.accuracy}
-        handlePasteCallback={this.handlePasteCallback.bind(this)}
-        handleNextTextCallback={this.handleNextTextCallback.bind(this)}
+      <>
+        <ToggleLight
+        darkModeCallback={this.darkModeCallback.bind(this)}
         />
-        
-        <TypingBox
-        input={this.state.input}
-        typingText={this.state.typingText}
-        seconds={this.state.seconds}
-        handledErrors={this.state.handledErrors}
-        runTimer={this.state.runTimer}
+        <div className="main-content">
+          <Header
+          wpm={this.state.wpm}
+          accuracy={this.state.accuracy}
+          handlePasteCallback={this.handlePasteCallback.bind(this)}
+          handleNextTextCallback={this.handleNextTextCallback.bind(this)}
+          />
+          
+          <TypingBox
+          input={this.state.input}
+          typingText={this.state.typingText}
+          seconds={this.state.seconds}
+          handledErrors={this.state.handledErrors}
+          runTimer={this.state.runTimer}
 
-        toggleRunTimerCallback={this.toggleRunTimerCallback.bind(this)}
-        inputCallback={this.inputCallback.bind(this)}
-        errorsCallback={this.errorsCallback.bind(this)}
-        handledErrorsCallback={this.handledErrorsCallback.bind(this)}
-        />
-      </div>
+          toggleRunTimerCallback={this.toggleRunTimerCallback.bind(this)}
+          inputCallback={this.inputCallback.bind(this)}
+          errorsCallback={this.errorsCallback.bind(this)}
+          handledErrorsCallback={this.handledErrorsCallback.bind(this)}
+          />
+        </div>
+      </>
     );
   }
 }

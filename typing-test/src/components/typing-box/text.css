@@ -10,7 +10,7 @@
 
 .letter-active{
   display: inline-block;
-  background-color: #8929ff;
+  background-color: #8929ff9a;
   /* color: rgb(119, 119, 119); */
   /* animation: cursorBlinking 0.5s infinite; */
 }
@@ -22,6 +22,7 @@
 
 .letter-error{
   display: inline-block;
+  /* color: rgb(255, 52, 52) */
   background-color: rgb(255, 52, 52);
 }
 

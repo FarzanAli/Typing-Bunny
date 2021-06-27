@@ -3,6 +3,7 @@
 :root{
   --hover-color: rgba(255, 255, 255, 0.13);
   --icon-color: rgba(255, 255, 255, 0.5);
+  --icon-color: #868686;
 }
 
 .header-container{
@@ -19,7 +20,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  color: var(--text-color);
 }
 
 .paste-container{
@@ -31,12 +32,20 @@
   height: 60px;
   background-color: var(--shade-1);
   border-radius: 6px;
+  box-shadow: var(--box-shadow);
+}
+.paste-container:hover{
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--shade-1);
+  box-shadow: var(--box-shadow), var(--box-shadow-inset);
+  /* transition: box-shadow 0.4s; */
 }
 
-.paste-container:hover{
+/* .paste-container:hover{
   background-color: var(--hover-color);
   transition: background-color 0.2s;
-}
+} */
 
 .next-container{
   display: flex;
@@ -44,23 +53,31 @@
   align-items: center;
 
   position: absolute;
-  margin-left: 70px;
+  margin-left: 75px;
   width: 60px;
   height: 60px;
   background-color: var(--shade-1);
   border-radius: 6px;
+
+  box-shadow: var(--box-shadow);
 }
 
 .next-container:hover{
+  box-shadow: var(--box-shadow-inset);
+  /* transition: box-shadow 0.4s; */
+}
+
+/* .next-container:hover{
   background-color: var(--hover-color);
   transition: background-color 0.2s;
-}
+} */
 
 .wpm-container{
   /* font-family: 'Roboto', sans-serif; */
   font-family: 'Montserrat', sans-serif;
   /* font-weight: 600; */
   font-size: 14px;
+  color: var(--text-color);
   /* background-color: gray; */
   /* width: 85px; */
   display: inline-block;
@@ -70,6 +87,7 @@
   font-family: 'Montserrat', sans-serif;
   /* font-weight: 600; */
   font-size: 14px;
+  color: var(--text-color);
   /* background-color: gray; */
   /* width: 100px; */
   display: inline-block;
@@ -87,6 +105,7 @@
   border-radius: 50%;
   text-align: center;
   line-height: 60px;
+  box-shadow: var(--box-shadow);
   
 }
 
@@ -102,4 +121,5 @@
   border-radius: 50%;
   text-align: center;
   line-height: 60px;
+  box-shadow: var(--box-shadow);
 }
