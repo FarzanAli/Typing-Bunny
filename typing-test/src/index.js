@@ -101,8 +101,13 @@ export default class Main extends Component{
   }
 
   handlePasteCallback(typingText){
+    let text = typingText;
+
+    //replaces newline characters with space in pasted text.
+    text = text.replace(/(\r\n|\n|\r)/gm, " ");
+
     this.setState({
-      typingText: typingText
+      typingText: text
     });
     this.resetTest();
   }
@@ -121,20 +126,10 @@ export default class Main extends Component{
     }
     this.resetTest();
   }
-  // 'rgb(34, 34, 34);'
-  darkModeCallback(){
-    
-    // document.documentElement.setAttribute("style", "--shade-1: rgb(34, 34, 34);");
-    // let rs = getComputedStyle(r)
-    // console.log(rs.getPropertyValue('--page-color'))
-  }
-
   render(){
     return(
       <>
-        <ToggleLight
-        darkModeCallback={this.darkModeCallback.bind(this)}
-        />
+        <ToggleLight />
         <div className="main-content">
           <Header
           wpm={this.state.wpm}
