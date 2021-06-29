@@ -1,20 +1,25 @@
 {
   "files": {
-    "main.css": "/custom-typing-test/static/css/main.8f5a4791.chunk.css",
-    "main.js": "/custom-typing-test/static/js/main.50fc20b2.chunk.js",
-    "main.js.map": "/custom-typing-test/static/js/main.50fc20b2.chunk.js.map",
-    "runtime-main.js": "/custom-typing-test/static/js/runtime-main.9528560a.js",
-    "runtime-main.js.map": "/custom-typing-test/static/js/runtime-main.9528560a.js.map",
-    "static/js/2.25a6e6c6.chunk.js": "/custom-typing-test/static/js/2.25a6e6c6.chunk.js",
-    "static/js/2.25a6e6c6.chunk.js.map": "/custom-typing-test/static/js/2.25a6e6c6.chunk.js.map",
+    "main.css": "/custom-typing-test/static/css/main.2791e7ed.chunk.css",
+    "main.js": "/custom-typing-test/static/js/main.4ad8f8da.chunk.js",
+    "main.js.map": "/custom-typing-test/static/js/main.4ad8f8da.chunk.js.map",
+    "runtime-main.js": "/custom-typing-test/static/js/runtime-main.0a6803b9.js",
+    "runtime-main.js.map": "/custom-typing-test/static/js/runtime-main.0a6803b9.js.map",
+    "static/js/2.61522e27.chunk.js": "/custom-typing-test/static/js/2.61522e27.chunk.js",
+    "static/js/2.61522e27.chunk.js.map": "/custom-typing-test/static/js/2.61522e27.chunk.js.map",
+    "static/js/3.2d5c9a00.chunk.js": "/custom-typing-test/static/js/3.2d5c9a00.chunk.js",
+    "static/js/3.2d5c9a00.chunk.js.map": "/custom-typing-test/static/js/3.2d5c9a00.chunk.js.map",
     "index.html": "/custom-typing-test/index.html",
-    "static/css/main.8f5a4791.chunk.css.map": "/custom-typing-test/static/css/main.8f5a4791.chunk.css.map",
-    "static/js/2.25a6e6c6.chunk.js.LICENSE.txt": "/custom-typing-test/static/js/2.25a6e6c6.chunk.js.LICENSE.txt"
+    "static/css/main.2791e7ed.chunk.css.map": "/custom-typing-test/static/css/main.2791e7ed.chunk.css.map",
+    "static/js/2.61522e27.chunk.js.LICENSE.txt": "/custom-typing-test/static/js/2.61522e27.chunk.js.LICENSE.txt",
+    "static/js/3.2d5c9a00.chunk.js.LICENSE.txt": "/custom-typing-test/static/js/3.2d5c9a00.chunk.js.LICENSE.txt",
+    "static/media/light-switch-off.07278c1f.mp3": "/custom-typing-test/static/media/light-switch-off.07278c1f.mp3",
+    "static/media/light-switch-on.d1b5cc23.mp3": "/custom-typing-test/static/media/light-switch-on.d1b5cc23.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.9528560a.js",
-    "static/js/2.25a6e6c6.chunk.js",
-    "static/css/main.8f5a4791.chunk.css",
-    "static/js/main.50fc20b2.chunk.js"
+    "static/js/runtime-main.0a6803b9.js",
+    "static/js/2.61522e27.chunk.js",
+    "static/css/main.2791e7ed.chunk.css",
+    "static/js/main.4ad8f8da.chunk.js"
   ]
 }
