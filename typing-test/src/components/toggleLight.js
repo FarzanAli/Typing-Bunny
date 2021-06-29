@@ -6,19 +6,18 @@ import LightSwitchOff from './audio/light-switch/light-switch-off.mp3';
 let ToggleLight = () => {
     
     const [isOn, setIsOn] = useState(true);
-    const [playOn] = useSound(LightSwitchOn);
+    const [playOn] = useSound(LightSwitchOn, {playbackRate: 1.2});
     const [playOff] = useSound(LightSwitchOff);
     useEffect(() => {
         isOn ? document.documentElement.setAttribute('theme', 'light') : document.documentElement.setAttribute('theme', 'dark');
-        isOn ? playOn() : playOff();
         document.documentElement.classList.add('transition');
         window.setTimeout(() => {
             document.documentElement.classList.remove('transition');
-        }, 1000); 
-    }, [isOn]);
+        }, 1000);
+    }, [isOn, playOn, playOff]);
 
     return(
-        <button type="button" className="toggleLight-container" onClick={() => setIsOn(!isOn)}>
+        <button type="button" className="toggleLight-container" onClick={() => {setIsOn(!isOn); isOn ? playOn() : playOff()}}>
             <FaMoon style={{width: `100%`, height: `100%`}}/>
         </button>
     );

@@ -31,8 +31,10 @@ export default class TypingBox extends Component {
       if (this.props.input[i] !== this.props.typingText[i]) {
         errors++;
       }
+      if(i === this.props.input.length - 1){
+        this.props.errorsCallback(errors);
+      }
     }
-    this.props.errorsCallback(errors);
   }
 
   render() {

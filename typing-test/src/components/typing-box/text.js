@@ -39,7 +39,6 @@ function Text(props) {
   }
   else if (props.input.length > 0 && props.input.length < props.typingText.length && props.runTimer) {
     //cursor
-    //Second Implementation
     /*
       Does not depend on "letter" classes to move cursor, instead depends on "word" class and indexes
       through to put the cursor on the index that immediately follows whatever value input.length is.
@@ -87,11 +86,6 @@ function Text(props) {
             document.getElementsByClassName("word").item(i).children[j].className = "letter-error";
           }
         }
-        // if(current <= props.input.length && props.input[current] !== props.typingText[current] && props.handledErrors.includes(current) === false){
-        //   console.log("error")
-        //   document.getElementsByClassName("word").item(i).children[j].className = "letter-error";
-        //   props.handledErrorsCallback(current);
-        // }
         current++;
       }
     }
