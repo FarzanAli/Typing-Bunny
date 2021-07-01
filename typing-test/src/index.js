@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Settings from './components/settings/settings.js';
 import ToggleLight from './components/toggleLight.js';
 import Header from './components/header/header.js';
 import TypingBox from './components/typing-box/typingBox.js';
@@ -129,6 +130,7 @@ export default class Main extends Component{
   render(){
     return(
       <>
+        <Settings />
         <ToggleLight />
         <div className="main-content">
           <Header

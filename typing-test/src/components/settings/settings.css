@@ -1,0 +1,26 @@
+.settings-container{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    background-color: #9E73FF;
+
+    /* box-shadow: inset 5px 5px 10px #7B78FF */
+}
+
+.settings-container[isopen="true"]{
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(-90deg);
+}
+
+.settings-container[isopen="false"]{
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(90deg);
+}

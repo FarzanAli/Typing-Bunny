@@ -5,7 +5,7 @@ import LightSwitchOn from './audio/light-switch/light-switch-on.mp3';
 import LightSwitchOff from './audio/light-switch/light-switch-off.mp3';
 let ToggleLight = () => {
     
-    const [isOn, setIsOn] = useState(true);
+    const [isOn, setIsOn] = useState(false);
     const [playOn] = useSound(LightSwitchOn, {playbackRate: 1.2});
     const [playOff] = useSound(LightSwitchOff);
     useEffect(() => {
