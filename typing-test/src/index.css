@@ -5,7 +5,7 @@
   --typing-box-width: 550px;
   --typing-box-height: 375px;
 }
-
+/* #e8e8e8 */
 html[theme="light"]{
   --page-color: #e8e8e8;
   --shade-1: #ececec;
@@ -13,6 +13,10 @@ html[theme="light"]{
   --text-color: #414141;
   --box-shadow-inset: inset -2px -2px 5px rgb(255, 255, 255),
                       inset 2px 2px 5px rgba(0, 0, 0, 0.15);
+  --settings-box-shadow: -10px -10px 10px rgba(255, 255, 255, 1), 10px 10px 10px rgba(0, 0, 0, 0.2);
+  --box-shadow-gear: -8px -8px 10px rgba(255, 255, 255, 1), 6px 6px 10px rgba(0, 0, 0, 0.2);
+  --box-shadow-gear-inset: inset 8px 8px 10px rgba(255, 255, 255, 0.3), inset -8px -8px 10px rgba(0, 0, 0, 0.3);
+  --purple-shade-1: #8929ff9a;
 }
 
 html[theme="dark"]{
@@ -22,6 +26,10 @@ html[theme="dark"]{
   --text-color: white;
   --box-shadow-inset: inset 2px 2px 5px rgb(0, 0, 0, 0.7),
   inset -2px -2px 5px rgba(255, 255, 255, 0.15);
+  --box-shadow-gear: -5px -5px 10px rgba(255, 255, 255, 0.12), 6px 6px 10px rgba(0, 0, 0, 0.35);
+  --box-shadow-gear-inset: inset 8px 8px 10px rgba(255, 255, 255, 0.2), inset -8px -8px 10px rgba(0, 0, 0, 0.4);
+  --purple-shade-1: #ad6bff9a;
+  --purple-shade-2: #3a22589a;
 }
 
 body {

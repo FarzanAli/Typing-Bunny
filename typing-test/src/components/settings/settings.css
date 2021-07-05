@@ -1,26 +1,33 @@
-.settings-container{
+:root{
+
+}
+
+.settings-button-container{
     position: absolute;
-    right: 20px;
     top: 20px;
+    right: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    border-radius: 50%;
     width: 60px;
     height: 60px;
-
-    border-radius: 50%;
-    background-color: #9E73FF;
-
-    /* box-shadow: inset 5px 5px 10px #7B78FF */
+    background-color: #BB86FC;
+    box-shadow: var(--box-shadow-gear);
 }
 
-.settings-container[isopen="true"]{
-    transition: transform 0.3s ease-in-out;
-    transform: rotate(-90deg);
+.gear{
+    width: 85%;
+    height: 85%;
+    color: whitesmoke;
 }
 
-.settings-container[isopen="false"]{
-    transition: transform 0.3s ease-in-out;
+.gear[isopen="true"]{
     transform: rotate(90deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.gear[isopen="false"]{
+    transform: rotate(-90deg);
+    transition: transform 0.3s ease-in-out;
 }

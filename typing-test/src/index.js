@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Settings from './components/settings/settings.js';
+import Settings from './components/settings/settings-button/settingsButton.js';
 import ToggleLight from './components/toggleLight.js';
 import Header from './components/header/header.js';
 import TypingBox from './components/typing-box/typingBox.js';

@@ -16,6 +16,13 @@ let ToggleLight = () => {
         }, 1000);
     }, [isOn, playOn, playOff]);
 
+    //removes keyboard focus from buttons.
+    document.addEventListener('click', (e) => {
+        if(document.activeElement.toString() === '[object HTMLButtonElement]'){
+            document.activeElement.blur();
+        }
+    });
+
     return(
         <button type="button" className="toggleLight-container" onClick={() => {setIsOn(!isOn); isOn ? playOn() : playOff()}}>
             <FaMoon style={{width: `100%`, height: `100%`}}/>
