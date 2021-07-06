@@ -1,5 +1,20 @@
-:root{
+@keyframes show-settings{
+    from{
+        opacity: 0%;
+    }
+    to{
+        opacity: 100%;
+    }
+}
 
+@keyframes hide-settings{
+    from{
+        opacity: 100%;
+    }
+    to{
+        opacity: 0%;
+        z-index: -1;
+    }
 }
 
 .settings-button-container{
@@ -14,6 +29,7 @@
     height: 60px;
     background-color: #BB86FC;
     box-shadow: var(--box-shadow-gear);
+    z-index: 3;
 }
 
 .gear{
@@ -30,4 +46,31 @@
 .gear[isopen="false"]{
     transform: rotate(-90deg);
     transition: transform 0.3s ease-in-out;
+}
+
+.settings-container{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+}
+
+.settings-container[isopen="true"]{
+    z-index: 1;
+    background: rgba( 255, 255, 255, 0.15 );
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: show-settings 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.settings-container[isopen="false"]{
+    z-index: 1;
+    background: rgba( 255, 255, 255, 0.15 );
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: hide-settings 0.3s;
+    animation-fill-mode: forwards;
 }
