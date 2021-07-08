@@ -1,21 +1,54 @@
 @keyframes show-settings{
     from{
-        opacity: 0%;
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        
     }
     to{
-        opacity: 100%;
+        background: rgba( 255, 255, 255, 0.15 );
+        backdrop-filter: blur(1px);
+        -webkit-backdrop-filter: blur(4px);
     }
 }
 
 @keyframes hide-settings{
     from{
-        opacity: 100%;
+        background: rgba( 255, 255, 255, 0.15 );
+        backdrop-filter: blur(1px);
+        -webkit-backdrop-filter: blur(4px);
+        
     }
     to{
-        opacity: 0%;
+        background-color: transparent;
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
         z-index: -1;
+        
     }
 }
+
+@keyframes slide-in-options{
+    from{
+        opacity: 0;
+        width: 100vw;
+    }
+    to{
+        opacity: 1;
+        width: 400px;
+    }
+}
+
+@keyframes slide-out-options{
+    from{
+        opacity: 1;
+        width: 400px;
+    }
+    to{
+        opacity: 0;
+        width: 100vw;
+    }
+}
+
 
 .settings-button-container{
     position: absolute;
@@ -49,6 +82,9 @@
 }
 
 .settings-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     width: 100vw;
     height: 100vh;
@@ -59,18 +95,37 @@
 
 .settings-container[isopen="true"]{
     z-index: 1;
-    background: rgba( 255, 255, 255, 0.15 );
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(4px);
     animation: show-settings 0.3s;
     animation-fill-mode: forwards;
 }
 
 .settings-container[isopen="false"]{
     z-index: 1;
-    background: rgba( 255, 255, 255, 0.15 );
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(4px);
     animation: hide-settings 0.3s;
     animation-fill-mode: forwards;
+}
+
+.settings-options{
+    width: 400px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.settings-options[isopen="true"]{
+    animation: slide-in-options 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.settings-options[isopen="false"]{
+    animation: slide-out-options 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.option{
+    margin-left: 22px;
+    margin-right: 22px;
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    background-color: white;
 }

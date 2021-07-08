@@ -14,7 +14,7 @@ let SettingsButton = () => {
             <div className="settings-button-container" onClick={() => {setIsOpen(!isOpen); gearSound()}}>
                 <GoGear className="gear" isopen={isOpen.toString()}/>
             </div>
-            <Settings isopen={isOpen.toString()}/>
+            <Settings isopen={isOpen}/>
         </>
     );
 }
