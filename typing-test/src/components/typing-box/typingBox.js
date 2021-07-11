@@ -4,7 +4,7 @@ import Text from './text.js';
 export default class TypingBox extends Component {
 
   componentDidMount() {
-    if(this.props.input.length < this.props.typingText.length){
+    if(this.props.input.length < this.props.typingText.length && document.getElementsByClassName("settings-container").item(0) === null){
       document.addEventListener('keydown', (event) => {
         this.keyboardInput(event.key)
       });

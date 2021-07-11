@@ -17,6 +17,7 @@ html[theme="light"]{
   --box-shadow-gear: -8px -8px 10px rgba(255, 255, 255, 1), 6px 6px 10px rgba(0, 0, 0, 0.2);
   --box-shadow-gear-inset: inset 8px 8px 10px rgba(255, 255, 255, 0.3), inset -8px -8px 10px rgba(0, 0, 0, 0.3);
   --purple-shade-1: #8929ff9a;
+  --box-shadow-settings-option: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 html[theme="dark"]{
@@ -30,6 +31,7 @@ html[theme="dark"]{
   --box-shadow-gear-inset: inset 8px 8px 10px rgba(255, 255, 255, 0.2), inset -8px -8px 10px rgba(0, 0, 0, 0.4);
   --purple-shade-1: #ad6bff9a;
   --purple-shade-2: #3a22589a;
+  --box-shadow-settings-option: none;
 }
 
 body {

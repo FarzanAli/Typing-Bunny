@@ -5,16 +5,16 @@
         
     }
     to{
-        background: rgba( 255, 255, 255, 0.15 );
-        backdrop-filter: blur(1px);
+        background: rgba( 255, 255, 255, 0.02 );
+        backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(4px);
     }
 }
 
 @keyframes hide-settings{
     from{
-        background: rgba( 255, 255, 255, 0.15 );
-        backdrop-filter: blur(1px);
+        /* background: rgba( 255, 255, 255, 0.15 ); */
+        backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(4px);
         
     }
@@ -34,19 +34,31 @@
     }
     to{
         opacity: 1;
-        width: 400px;
+        width: var(--settings-options-width);
     }
 }
 
 @keyframes slide-out-options{
     from{
         opacity: 1;
-        width: 400px;
+        width: var(--settings-options-width);
     }
     to{
         opacity: 0;
         width: 100vw;
     }
+}
+
+:root{
+    --settings-options-width: 700px;
+}
+
+html[theme="light"]{
+    --options-color: #ececec;
+}
+
+html[theme="dark"]{
+    --options-color: #ececec; 
 }
 
 
@@ -106,7 +118,7 @@
 }
 
 .settings-options{
-    width: 400px;
+    width: var(--settings-options-width);
     display: flex;
     justify-content: flex-end;
 }
@@ -122,10 +134,17 @@
 }
 
 .option{
-    margin-left: 22px;
-    margin-right: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 72px;
+    margin-right: 72px;
     width: 90px;
     height: 90px;
     border-radius: 10px;
-    background-color: white;
+    background-color: var(--options-color);
+    box-shadow: var(--box-shadow-settings-option);
+
+    text-align: center;
 }
