@@ -133,18 +133,6 @@ html[theme="dark"]{
     animation-fill-mode: forwards;
 }
 
-.option{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    margin-left: 72px;
-    margin-right: 72px;
-    width: 90px;
-    height: 90px;
-    border-radius: 10px;
-    background-color: var(--options-color);
-    box-shadow: var(--box-shadow-settings-option);
-
-    text-align: center;
+.settings-option-column{
+    width: calc(var(--settings-options-width)/2);
 }

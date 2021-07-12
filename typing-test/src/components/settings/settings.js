@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../typing-box/text.css';
-import CursorButton from './settings-options/cursor-options/button.js';
+import OptionsBox from './elements/optionBox.js';
 
 let Settings = (props) => {
 
@@ -14,25 +14,17 @@ let Settings = (props) => {
         <>
         {showOptions === true && 
         <div className="settings-container" isopen={props.isopen.toString()}>
-            
-                <div className="settings-options" onAnimationEnd={(e) => {if(e.animationName === "slide-out-options"){setShowOptions(!showOptions)}}} isopen={props.isopen.toString()}>
-                    <div className="option" isopen={props.isopen.toString()}>
-                        <div className="settings-cursor-options">
-                            <CursorButton />
-                        </div>
-                    </div>
-                    <div className="option" isopen={props.isopen.toString()}>
-                        <div className="settings-error-options">
-                            Coming soon...
-                        </div>
-                    </div>
-                    <div className="option" isopen={props.isopen.toString()}>
-                        <div className="settings-theme-options">
-                            Coming soon...
-                        </div>
-                    </div>
+            <div className="settings-options" onAnimationEnd={(e) => {if(e.animationName === "slide-out-options"){setShowOptions(!showOptions)}}} isopen={props.isopen.toString()}>
+                <div className="settings-option-column">
+                    <OptionsBox 
+                    title={"Format"}
+                    toggle={[{name: "Highlight Text", checked: "checked"}, {name: "Typing Box", checked: ""}]}
+                    />
                 </div>
-        </div>  }</>
+                <div className="settings-option-column">cd</div>
+            </div>
+        </div>}
+        </>
     );
 }
 
