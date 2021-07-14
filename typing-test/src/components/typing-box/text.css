@@ -10,7 +10,7 @@
 
 .letter-active{
   display: inline-block;
-  background-color: var(--purple-shade-1);
+  background-color: var(--cursor-color);
   /* color: rgb(119, 119, 119); */
   /* animation: cursorBlinking 0.5s infinite; */
 }

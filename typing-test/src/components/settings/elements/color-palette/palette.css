@@ -1,0 +1,73 @@
+:root{
+    --color-width: 27px;
+    --color-height: 25px;
+}
+
+.palette-container{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-bottom: 30px;
+}
+
+.color-container > input[type=checkbox] {
+    position: absolute;
+}
+
+.color-container{
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.custom-color-toggle{
+    margin-bottom: calc(-1*var(--color-height) + 2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute; */
+    width: var(--color-width);
+    height: var(--color-height);
+    border-radius: 4px;
+    background-color: transparent;
+    border: 2px solid transparent;
+}
+
+/* hover */
+.color-container:hover input ~ .custom-color-toggle {
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+/* click */
+.color-container input:active ~ .custom-color-toggle {
+    
+}
+  
+/* checked */
+.color-container input:checked ~ .custom-color-toggle {
+    border: 2px solid var(--ui-color);
+    /* background-color: green; */
+}
+
+.custom-toggle:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.color-container input:checked ~ .custom-color-toggle:after {
+    display: block;
+}
+  
+/* checkmark */
+.color-container .custom-color-toggle:after {
+    background-color: var(--ui-color);
+}
+
+.color-picker-container{
+    /* padding-left: 20px;
+    padding-bottom: 30px; */
+}

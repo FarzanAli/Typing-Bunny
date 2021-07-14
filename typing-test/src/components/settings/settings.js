@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../typing-box/text.css';
-import OptionsBox from './elements/optionBox.js';
+import OptionsBox from './elements/box/optionBox.js';
 
 let Settings = (props) => {
 
@@ -19,6 +19,8 @@ let Settings = (props) => {
                     <OptionsBox 
                     title={"Format"}
                     toggle={[{name: "Highlight Text", checked: "checked"}, {name: "Typing Box", checked: ""}]}
+                    // palette={[{color: "#ad6bff9a", checked: "checked"}, {color: "var(--custom-cursor-color)", checked: ""}]}
+                    palette={["#ad6bff9a", "#008080"]}
                     />
                 </div>
                 <div className="settings-option-column">cd</div>

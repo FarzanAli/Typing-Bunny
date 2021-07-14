@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+
+:root{
+    --ui-color: rgb(128, 128, 128);
+    --checkbox-size: 20px;
+}
+
+.option-box-container{
+    width: 220px;
+    height: fit-content;
+    border-radius: 17px;
+    border: 4px solid var(--ui-color);
+}
+
+.option-title{
+    font-family: 'Roboto', sans-serif;
+
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 25px;
+    font-weight: 800;
+
+    color: var(--ui-color);
+}
