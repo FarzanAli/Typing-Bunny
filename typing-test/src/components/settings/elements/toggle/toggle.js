@@ -6,12 +6,14 @@ import boopOn from '../../../audio/toggle/boop-on.mp3';
 let Toggle = (props) => {
 
     let onChange = e => {
-        for(let i = 0; i < document.getElementsByClassName("toggle").length; i++){
-            if(document.getElementsByClassName("toggle").item(i).checked && i !== parseInt(e.target.id)){
-                document.getElementsByClassName("toggle").item(i).checked = false;
-            }
-            if(document.getElementsByClassName("toggle").item(i).checked === false && i === parseInt(e.target.id)){
-                document.getElementsByClassName("toggle").item(i).checked = true
+        if(document.getElementsByClassName(props.title + "-toggle").length !== 1){
+            for(let i = 0; i < document.getElementsByClassName(props.title + "-toggle").length; i++){
+                if(document.getElementsByClassName(props.title + "-toggle").item(i).checked && i !== parseInt(e.target.id)){
+                    document.getElementsByClassName(props.title + "-toggle").item(i).checked = false;
+                }
+                if(document.getElementsByClassName(props.title + "-toggle").item(i).checked === false && i === parseInt(e.target.id)){
+                    document.getElementsByClassName(props.title + "-toggle").item(i).checked = true
+                }
             }
         }
     }
@@ -25,7 +27,7 @@ let Toggle = (props) => {
                     
                     <div key={idx}>
                         <label className="label-container">
-                            <input className="toggle" type="checkbox" defaultChecked={object.checked} id={idx} onChange={onChange} onClick={boop}/>
+                            <input className={props.title + "-toggle"} type="checkbox" defaultChecked={object.checked} id={idx} onChange={onChange} onClick={boop}/>
                             <span className="custom-toggle"></span>
                             &nbsp;{object.name}
                         </label>

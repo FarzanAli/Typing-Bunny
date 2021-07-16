@@ -19,11 +19,17 @@ let Settings = (props) => {
                     <OptionsBox 
                     title={"Format"}
                     toggle={[{name: "Highlight Text", checked: "checked"}, {name: "Typing Box", checked: ""}]}
-                    // palette={[{color: "#ad6bff9a", checked: "checked"}, {color: "var(--custom-cursor-color)", checked: ""}]}
-                    palette={["#ad6bff9a", "#008080"]}
+                    palette={[{color: "#ad6bff9a", checked: "checked"}, {color: "var(--custom-cursor-color)", checked: ""}]}
+                    // palette={["#ad6bff9a", "#008080"]}
                     />
                 </div>
-                <div className="settings-option-column">cd</div>
+                <div className="settings-option-column">
+                    <OptionsBox
+                        title={"Auto-Stop"}
+                        toggle={[{name:"(description)", checked: ""}]}
+                        palette={[]}
+                    />
+                </div>
             </div>
         </div>}
         </>

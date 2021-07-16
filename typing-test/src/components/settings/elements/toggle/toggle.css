@@ -46,7 +46,7 @@ input[type=checkbox] {
 
 /* click */
 .label-container input:active ~ .custom-toggle {
-    animation: border-click 0.06s;
+    animation: border-click 0.1s;
     
 }
   
@@ -70,7 +70,7 @@ input[type=checkbox] {
     width: 80%;
     height: 80%;
     border-radius: 2px;
-    animation: checkmark-grow 0.22s;
+    animation: checkmark-grow 0.2s;
     background-color: var(--ui-color);
 }
 
@@ -98,7 +98,7 @@ input[type=checkbox] {
         width: var(--checkbox-size);
         height: var(--checkbox-size);
     }
-    50%{
+    100%{
         margin-left: 1px;
         margin-top: 1px;
         width: calc(var(--checkbox-size) - 2px);
