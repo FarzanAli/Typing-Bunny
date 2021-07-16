@@ -19,11 +19,6 @@ let OptionBox = (props) => {
                 palette={props.palette}
                 />
             )}
-            {/* {props.palette.length !== 0 && (
-                <ColorPicker
-                palette={props.palette}
-                />
-            )} */}
         </div>
     );   
 }

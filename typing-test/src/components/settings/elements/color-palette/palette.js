@@ -5,7 +5,12 @@ import ColorPicker from './colorPicker.js';
 let Palette = (props) => {
 
     const [showColorPicker, setShowColorPicker] = useState(false);
-    const [color, setColor] = useState(props.palette[0])
+
+    const [color, setColor] = useState("white")
+
+    let colorCallback = (color) => {
+        setColor(color);
+    }
 
     let onChange = e => {
         for(let i = 0; i < document.getElementsByClassName("color").length; i++){
@@ -16,13 +21,14 @@ let Palette = (props) => {
                 document.getElementsByClassName("color").item(i).checked = true
             }
         }
-        if(parseInt(e.target.id) === 1){
+        if(e.target.id === "custom-color-button"){
+            
             setShowColorPicker(!showColorPicker)
         }
-    }
-
-    let handleColorChange = (color) => {
-        document.documentElement.style.setProperty('--cursor-color', color.hex);
+        else{
+            setShowColorPicker(false);
+        }
+        document.documentElement.style.setProperty('--cursor-color', color);
     }
 
     return(
@@ -41,13 +47,6 @@ let Palette = (props) => {
                         <input className="color" type="checkbox" defaultChecked={object.checked} id={idx} style={{backgroundColor: object.color}} onChange={onChange} />
                         <span className="custom-color-toggle" style={{backgroundColor: object.color}}>
                         </span><br/>
-                        {
-                            showColorPicker === true && (<div className="color-picker-container">
-                                <ColorPicker
-                                palette={props.palette}
-                                />
-                            </div>
-                        )}
                     </label>
                     : 
                     <label className="color-container" key={idx}>
@@ -58,6 +57,18 @@ let Palette = (props) => {
 
                 ))
             }
+        </div>
+        <div className="custom-color-container">
+            <button className="custom-color-button" id="custom-color-button" onClick={onChange} style={{backgroundColor: color}}> Custom
+            </button>
+            {
+                    showColorPicker === true && (<div className="color-picker-container">
+                        <ColorPicker
+                        palette={props.palette}
+                        colorCallback={colorCallback.bind(this)}
+                        />
+                    </div>
+            )}
         </div>
         </>
     );

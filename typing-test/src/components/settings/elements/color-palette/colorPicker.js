@@ -8,6 +8,8 @@ let ColorPicker = (props) => {
 
     let onChange = (color) => {
         setColor(color.hex)
+        props.colorCallback(color.hex);
+        document.documentElement.style.setProperty('--cursor-color', color.hex);
     }
 
     return(
