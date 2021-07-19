@@ -17,6 +17,7 @@
 .label-container{
     display: flex;
     align-items: center;
+    color: var(--settings-text-color);
 }
 
 input[type=checkbox] {
