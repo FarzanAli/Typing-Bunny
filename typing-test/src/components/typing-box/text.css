@@ -23,7 +23,7 @@
 .letter-error{
   display: inline-block;
   /* color: rgb(255, 52, 52) */
-  background-color: rgb(255, 52, 52);
+  background-color: var(--error-color);
 }
 
 .letter-finished{
