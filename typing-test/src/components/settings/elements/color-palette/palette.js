@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './palette.css';
 import ColorPicker from './colorPicker.js';
 
@@ -6,12 +6,12 @@ let Palette = (props) => {
 
     const [showColorPicker, setShowColorPicker] = useState(false);
 
-    const [color, setColor] = useState("white")
+    const [color, setColor] = useState(getComputedStyle(document.documentElement).getPropertyValue('--cursor-color'))
 
     let colorCallback = (color) => {
         setColor(color);
     }
-
+    
     let onChange = e => {
         for(let i = 0; i < document.getElementsByClassName("color").length; i++){
             if(document.getElementsByClassName("color").item(i).checked && i !== parseInt(e.target.id)){
@@ -21,15 +21,18 @@ let Palette = (props) => {
                 document.getElementsByClassName("color").item(i).checked = true
             }
         }
-        if(e.target.id === "custom-color-button"){
-            
+        if(e.target.id === (document.getElementsByClassName("color").length - 1).toString()){
             setShowColorPicker(!showColorPicker)
         }
-        else{
-            setShowColorPicker(false);
+        if(e.target.style.backgroundColor !== ""){
+            setColor(e.target.style.backgroundColor)
         }
-        document.documentElement.style.setProperty('--cursor-color', color);
+        
     }
+
+    useEffect(() => {
+        document.documentElement.style.setProperty('--cursor-color', color);
+    }, [color, showColorPicker])
 
     return(
         <>
@@ -38,7 +41,7 @@ let Palette = (props) => {
                 props.palette.map((object, idx) => (
                     idx === 0 ? 
                     <label className="color-container" key={idx} style={{marginLeft: "0px"}}>
-                        <input className="color" type="checkbox" defaultChecked={object.checked} id={idx} style={{backgroundColor: "red"}} onChange={onChange}/>
+                        <input className="color" type="checkbox" defaultChecked={object.checked} id={idx} style={{backgroundColor: object.color}} onChange={onChange}/>
                         <span className="custom-color-toggle" style={{backgroundColor: object.color}}>
                         </span><br/>
                     </label>
@@ -59,8 +62,13 @@ let Palette = (props) => {
             }
         </div>
         <div className="custom-color-container">
-            <button className="custom-color-button" id="custom-color-button" onClick={onChange} style={{backgroundColor: color}}> Custom
-            </button>
+            <div className="custom-color-button" onClick={onChange}>Custom
+                <label className="color-container">
+                    <input className="color" type="checkbox" defaultChecked={""} style={{backgroundColor: color}} onClick={onChange}/>
+                    <span className="custom-color-toggle" style={{backgroundColor: color}} id={props.palette.length}>
+                    </span>
+                </label>
+            </div>
             {
                     showColorPicker === true && (<div className="color-picker-container">
                         <ColorPicker

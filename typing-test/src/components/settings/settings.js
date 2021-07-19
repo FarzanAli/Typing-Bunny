@@ -10,6 +10,12 @@ let Settings = (props) => {
         setShowOptions(true)
     }
 
+    window.onclick = e => {
+        if(e.target.className === "settings-container"){
+            document.getElementsByClassName("settings-button-container").item(0).click();
+        }
+    } 
+
     return(
         <>
         {showOptions === true && 
@@ -19,7 +25,7 @@ let Settings = (props) => {
                     <OptionsBox 
                     title={"Format"}
                     toggle={[{name: "Highlight Text", checked: "checked"}, {name: "Typing Box", checked: ""}]}
-                    palette={[{color: "#ad6bff9a", checked: "checked"}, {color: "#FFFFFF", checked: ""}]}
+                    palette={[{color: "#8929ff9a", checked: "checked"}, {color: "#FFFFFF", checked: ""}]}
                     />
                 </div>
                 <div className="settings-option-column">
