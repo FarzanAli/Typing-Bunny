@@ -53,14 +53,6 @@
     --settings-options-width: 700px;
 }
 
-html[theme="light"]{
-    --options-color: #ececec;
-}
-
-html[theme="dark"]{
-    --options-color: #ececec; 
-}
-
 
 .settings-button-container{
     position: absolute;
@@ -135,7 +127,6 @@ html[theme="dark"]{
 }
 
 .settings-option-column{
-    /* margin-top: 10vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
