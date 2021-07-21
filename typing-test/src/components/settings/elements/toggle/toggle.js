@@ -19,11 +19,14 @@ let Toggle = (props) => {
 
         if(props.title === "Theme"){
             document.documentElement.setAttribute("neumorphism", document.documentElement.getAttribute("neumorphism") === "true" ? "false": "true" );
-            console.log(document)
         }
     }
 
     const [boop] = useSound(boopOn);
+
+    if(props.title==="Theme"){
+        props.toggle[0].checked = document.documentElement.getAttribute("neumorphism") === "true" ? "checked" : ""
+    }
 
     return(
         <div className="toggle-container">

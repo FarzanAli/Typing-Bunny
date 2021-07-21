@@ -1,7 +1,7 @@
 import React from 'react';
 import './text.css';
 
-function Text(props) {
+let Text = (props) => {
 
   let wordArray = [];
   if (props.typingText.length === 1) {

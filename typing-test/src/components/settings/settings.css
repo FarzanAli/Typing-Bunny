@@ -98,7 +98,6 @@
 }
 
 .settings-container[isopen="true"]{
-    user-select: none;
     z-index: 1;
     animation: show-settings 0.3s;
     animation-fill-mode: forwards;
