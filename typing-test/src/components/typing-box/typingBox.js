@@ -3,14 +3,36 @@ import Text from './text.js';
 
 export default class TypingBox extends Component {
 
-  componentDidMount() {
-    if(this.props.input.length < this.props.typingText.length && document.getElementsByClassName("settings-container").item(0) === null){
-      document.addEventListener('keydown', (event) => {
-        this.keyboardInput(event.key)
-      });
+  constructor(props){
+    super(props);
+    this.state = {
+      keys: []
     }
   }
 
+  componentDidMount() {
+    if(this.props.input.length < this.props.typingText.length && document.getElementsByClassName("settings-container").item(0) === null){
+      document.addEventListener('keydown', (event) => {
+        this.keyboardInput(event.key);
+        let newKeys = this.state.keys;
+        newKeys.push(event.key)
+        this.setState({keys: newKeys}, () => {
+          if(this.state.keys[0] === "Control"){
+            this.props.inputCallback(this.state.keys)
+          }
+        });
+      });
+      document.addEventListener('keyup', (event) => {
+        let newKeys = this.state.keys
+        for(let i = 0; i < newKeys.length; i++){
+          if(newKeys[i] === event.key){
+            newKeys.splice(i, 1);
+          }
+        }
+        this.setState({keys: newKeys})
+      })
+    }
+  }
 
   keyboardInput(data) {
     if (data === "Backspace" && this.props.input.length < this.props.typingText.length) {

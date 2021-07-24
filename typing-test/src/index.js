@@ -84,6 +84,18 @@ export default class Main extends Component{
         input: this.state.input.slice(0, this.state.input.length - 1)
       });
     }
+    else if(typeof(data) === "object"){
+      if(data[0] === "Control" && data[1] === "Backspace"){
+        let input = this.state.input;
+        for(let i = input.length - 1; i >= 0; i--){
+          if(input[i] === " " || i === 0){
+            input = input.slice(0, i === 0 ? i: i + 1);
+            break;
+          }
+        }
+        this.setState({input: input});
+      }
+    }
     else{
       this.setState({
         input: this.state.input + data

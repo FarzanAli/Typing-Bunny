@@ -47,14 +47,13 @@ let Text = (props) => {
     for(let i = 0; i < wordArray.length; i++){
       for(let j = 0; j < wordArray[i].length; j++){
         if(cursorIndex === props.input.length){
-          //Fixes bug in which cursor leaves trail 1 letter activated when backspacing.
+          //Fixes bug in which cursor leaves 1 letter activated when backspacing.
           if(document.getElementsByClassName("letter-active")[1] !== undefined){
             if(j < document.getElementsByClassName("letter-active")[1].id){
               document.getElementsByClassName("letter-active")[1].className = "letter";
             }
             else if(j > document.getElementsByClassName("letter-active")[1].id){
               document.getElementsByClassName("letter-active")[1].className = "letter";
-
             }
           }
           if(document.getElementsByClassName("letter-active").length > 1){
@@ -67,6 +66,12 @@ let Text = (props) => {
 
           document.getElementsByClassName("word").item(i).children[j].className = "letter-active";
           
+        }
+        if(document.getElementsByClassName("word").item(i).children[j].className === "letter-error" && cursorIndex > props.input.length){
+          document.getElementsByClassName("word").item(i).children[j].className = "letter";
+          if(document.getElementsByClassName("letter-active").length > 1){
+            document.getElementsByClassName("letter-active").item(1).className = "letter";
+          }
         }
         cursorIndex++;
       }

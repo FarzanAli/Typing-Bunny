@@ -41,7 +41,7 @@ let Settings = (props) => {
                 <div className="settings-option-column">
                     <OptionsBox
                         title={"Auto-Stop"}
-                        toggle={[{name:"(description)", checked: ""}]}
+                        toggle={[{name:"Stop cursor from moving past word if error has been made.", checked: ""}]}
                         palette={[]}
                     />
                     <OptionsBox

@@ -20,6 +20,10 @@
     color: var(--settings-text-color);
 }
 
+.description-container{
+    margin-left: 20px;
+}
+
 input[type=checkbox] {
     display: flex;
     justify-content: center;

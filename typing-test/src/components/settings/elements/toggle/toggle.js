@@ -37,7 +37,7 @@ let Toggle = (props) => {
                         <label className="label-container">
                             <input className={props.title + "-toggle"} type="checkbox" defaultChecked={object.checked} id={idx} onChange={onChange} onClick={boop}/>
                             <span className="custom-toggle"></span>
-                            &nbsp;{object.name}
+                            <div className="description-container">{object.name}</div>
                         </label>
                         <br/>
                     </div>
