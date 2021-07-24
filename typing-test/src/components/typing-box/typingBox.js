@@ -17,8 +17,8 @@ export default class TypingBox extends Component {
         let newKeys = this.state.keys;
         newKeys.push(event.key)
         this.setState({keys: newKeys}, () => {
-          if(this.state.keys[0] === "Control"){
-            this.props.inputCallback(this.state.keys)
+          if(this.state.keys[this.state.keys.length - 2] === "Control"){
+            this.props.inputCallback(this.state.keys)            
           }
         });
       });

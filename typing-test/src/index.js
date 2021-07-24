@@ -85,7 +85,7 @@ export default class Main extends Component{
       });
     }
     else if(typeof(data) === "object"){
-      if(data[0] === "Control" && data[1] === "Backspace"){
+      if(data[data.length - 2] === "Control" && data[data.length - 1] === "Backspace"){
         let input = this.state.input;
         for(let i = input.length - 1; i >= 0; i--){
           if(input[i] === " " || i === 0){
