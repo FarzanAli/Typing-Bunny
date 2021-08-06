@@ -3,6 +3,7 @@
 :root{
     --ui-color: rgb(128, 128, 128);
     --checkbox-size: 20px;
+    --description-font-size: 16px;
 }
 
 .toggle-container{
@@ -22,6 +23,7 @@
 
 .description-container{
     margin-left: 20px;
+    font-size: var(--description-font-size);
 }
 
 input[type=checkbox] {
@@ -77,6 +79,15 @@ input[type=checkbox] {
     border-radius: 2px;
     animation: checkmark-grow 0.2s;
     background-color: var(--text-color);
+}
+
+@media only screen and (min-width: 1300px){
+    :root{
+        --description-font-size: 20px;
+    }
+    .custom-color-button{
+        font-size: var(--description-font-size);
+    }
 }
 
 @keyframes checkmark-grow{

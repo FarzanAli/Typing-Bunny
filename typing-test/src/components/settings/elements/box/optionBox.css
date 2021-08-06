@@ -3,10 +3,12 @@
 :root{
     --ui-color: rgb(128, 128, 128);
     --checkbox-size: 20px;
+    --option-box-width: 220px;
+    --option-font: 25px;
 }
 
 .option-box-container{
-    width: 220px;
+    width: var(--option-box-width);
     height: fit-content;
     border-radius: 17px;
 }
@@ -17,8 +19,15 @@
     padding-left: 20px;
     padding-top: 15px;
     padding-bottom: 20px;
-    font-size: 25px;
+    font-size: var(--option-font);
     font-weight: 800;
 
     color: var(--text-color);
+}
+
+@media only screen and (min-width: 1300px){
+    :root{
+        --option-box-width: 300px;
+        --option-font: 38px;
+    }
 }

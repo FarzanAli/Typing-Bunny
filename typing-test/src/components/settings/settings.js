@@ -20,11 +20,13 @@ let Settings = (props) => {
                     title={"Format"}
                     toggle={[{name: "Highlight Text", checked: "checked"}, {name: "Typing Box", checked: ""}]}
                     palette={[]}
+                    mute={props.mute}
                     />
                     <OptionsBox
                     title={"Theme"}
                     toggle={[{name: "Neumorphism", checked: "checked"}]}
                     palette={[]}
+                    mute={props.mute}
                     />
                     <OptionsBox
                     title={"Errors"}
@@ -36,6 +38,7 @@ let Settings = (props) => {
                             cssVariable: '--error-color'
                         }
                     }
+                    mute={props.mute}
                     />
                 </div>
                 <div className="settings-option-column">
@@ -43,6 +46,7 @@ let Settings = (props) => {
                         title={"Auto-Stop"}
                         toggle={[{name:"Stop cursor from moving past word if error has been made.", checked: ""}]}
                         palette={[]}
+                        mute={props.mute}
                     />
                     <OptionsBox
                     title={"Cursor"}
@@ -52,6 +56,7 @@ let Settings = (props) => {
                         array: [{color: "#8929ff9a", checked: "checked"}, {color: "#7EFF29", checked: ""}, {color: "#FFB300", checked: ""}, {color: "#00FFED", checked: ""}], 
                         cssVariable: '--cursor-color'
                     }}
+                    mute={props.mute}
                     />
                 </div>
             </div>

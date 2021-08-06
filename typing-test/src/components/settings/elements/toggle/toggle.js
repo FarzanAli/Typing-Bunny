@@ -27,7 +27,6 @@ let Toggle = (props) => {
     if(props.title==="Theme"){
         props.toggle[0].checked = document.documentElement.getAttribute("neumorphism") === "true" ? "checked" : ""
     }
-
     return(
         <div className="toggle-container">
             {
@@ -35,7 +34,7 @@ let Toggle = (props) => {
                     
                     <div key={idx}>
                         <label className="label-container">
-                            <input className={props.title + "-toggle"} type="checkbox" defaultChecked={object.checked} id={idx} onChange={onChange} onClick={boop}/>
+                            <input className={props.title + "-toggle"} type="checkbox" defaultChecked={object.checked} id={idx} onChange={onChange} onClick={() => {if(!props.mute) boop()}}/>
                             <span className="custom-toggle"></span>
                             <div className="description-container">{object.name}</div>
                         </label>

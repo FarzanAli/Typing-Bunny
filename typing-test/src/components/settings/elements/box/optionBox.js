@@ -11,11 +11,13 @@ let OptionBox = (props) => {
                 <Toggle
                 toggle={props.toggle}
                 title={props.title}
+                mute={props.mute}
                 />
             )}
             {props.palette.length !== 0 && (
                 <Palette 
                 palette={props.palette}
+                mute={props.mute}
                 />
             )}
         </div>

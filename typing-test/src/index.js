@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Settings from './components/settings/settings-button/settingsButton.js';
+import SettingsButton from './components/settings/settings-button/settingsButton.js';
 import ToggleLight from './components/toggleLight.js';
+import Audio from './components/audio/audio.js';
 import Header from './components/header/header.js';
 import TypingBox from './components/typing-box/typingBox.js';
 
@@ -21,7 +22,8 @@ export default class Main extends Component{
       seconds: 0,
       wpm: 0,
       accuracy: 0,
-      handledErrors: []
+      handledErrors: [],
+      mute: false
     };
   }
 
@@ -139,11 +141,25 @@ export default class Main extends Component{
     }
     this.resetTest();
   }
+
+  muteCallback(mute){
+    this.setState({mute: mute});
+  }
+
   render(){
     return(
       <>
-        <Settings />
-        <ToggleLight />
+        <SettingsButton
+        mute={this.state.mute}
+        />
+        <div className="minibar-container">
+          <Audio
+          muteCallback={this.muteCallback.bind(this)}
+          />
+          <ToggleLight
+          mute={this.state.mute}
+          />
+        </div>
         <div className="main-content">
           <Header
           wpm={this.state.wpm}

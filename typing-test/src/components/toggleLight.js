@@ -3,8 +3,7 @@ import { FaMoon } from 'react-icons/fa';
 import useSound from 'use-sound';
 import LightSwitchOn from './audio/light-switch/light-switch-on.mp3';
 import LightSwitchOff from './audio/light-switch/light-switch-off.mp3';
-let ToggleLight = () => {
-    
+let ToggleLight = (props) => {
     const [isOn, setIsOn] = useState(false);
     const [playOn] = useSound(LightSwitchOn, {playbackRate: 1.2});
     const [playOff] = useSound(LightSwitchOff);
@@ -24,8 +23,8 @@ let ToggleLight = () => {
     });
 
     return(
-        <button type="button" className="toggleLight-container" onClick={() => {setIsOn(!isOn); isOn ? playOn() : playOff()}}>
-            <FaMoon style={{width: `100%`, height: `100%`}}/>
+        <button type="button" className="test" onClick={() => {setIsOn(!isOn); if(!props.mute) isOn ? playOn() : playOff()}}>
+            <FaMoon style={{width: `95%`, height: `95%`}}/>
         </button>
     );
 }
