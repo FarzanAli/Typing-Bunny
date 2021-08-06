@@ -20,12 +20,19 @@ let Toggle = (props) => {
         if(props.title === "Theme"){
             document.documentElement.setAttribute("neumorphism", document.documentElement.getAttribute("neumorphism") === "true" ? "false": "true" );
         }
+
+        if(props.title === "Auto-Stop"){
+            props.autoStopCallback(document.getElementsByClassName(props.title + "-toggle").item(0).checked)
+        }
     }
 
     const [boop] = useSound(boopOn);
 
-    if(props.title==="Theme"){
+    if(props.title === "Theme"){
         props.toggle[0].checked = document.documentElement.getAttribute("neumorphism") === "true" ? "checked" : ""
+    }
+    else if(props.title === "Auto-Stop"){
+        props.toggle[0].checked = props.autoStop;
     }
     return(
         <div className="toggle-container">

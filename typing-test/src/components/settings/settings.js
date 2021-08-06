@@ -47,6 +47,8 @@ let Settings = (props) => {
                         toggle={[{name:"Stop cursor from moving past word if error has been made.", checked: ""}]}
                         palette={[]}
                         mute={props.mute}
+                        autoStopCallback={props.autoStopCallback.bind(this)}
+                        autoStop={props.autoStop}
                     />
                     <OptionsBox
                     title={"Cursor"}

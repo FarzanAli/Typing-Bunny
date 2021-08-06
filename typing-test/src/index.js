@@ -146,11 +146,17 @@ export default class Main extends Component{
     this.setState({mute: mute});
   }
 
+  autoStopCallback(data){
+    this.setState({autoStop: data});
+  }
+
   render(){
     return(
       <>
         <SettingsButton
         mute={this.state.mute}
+        autoStopCallback={this.autoStopCallback.bind(this)}
+        autoStop={this.state.autoStop}
         />
         <div className="minibar-container">
           <Audio
@@ -174,6 +180,8 @@ export default class Main extends Component{
           seconds={this.state.seconds}
           handledErrors={this.state.handledErrors}
           runTimer={this.state.runTimer}
+          errors={this.state.errors}
+          autoStop={this.state.autoStop}
 
           toggleRunTimerCallback={this.toggleRunTimerCallback.bind(this)}
           inputCallback={this.inputCallback.bind(this)}

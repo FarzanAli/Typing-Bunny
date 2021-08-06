@@ -13,7 +13,20 @@ export default class TypingBox extends Component {
   componentDidMount() {
     if(this.props.input.length < this.props.typingText.length && document.getElementsByClassName("settings-container").item(0) === null){
       document.addEventListener('keydown', (event) => {
-        this.keyboardInput(event.key);
+        // if(this.props.errors === 0){
+        //   this.keyboardInput(event.key);
+        // }
+        // else if(this.props.errors > 0 && parseInt(document.getElementsByClassName("letter-active").item(0).id) + 1 !== document.getElementsByClassName("letter-active").item(0).parentElement.children.length - 1){
+        //   this.keyboardInput(event.key);
+        // }
+        if(this.props.autoStop){
+          if(this.props.errors === 0 || event.key === "Backspace"){
+            this.keyboardInput(event.key);
+          }
+        }
+        else{
+          this.keyboardInput(event.key);
+        }
         let newKeys = this.state.keys;
         newKeys.push(event.key)
         this.setState({keys: newKeys}, () => {

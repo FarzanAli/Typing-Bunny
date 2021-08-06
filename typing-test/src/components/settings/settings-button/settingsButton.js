@@ -17,6 +17,8 @@ let SettingsButton = (props) => {
             <Settings
             isopen={isOpen}
             mute={props.mute}
+            autoStopCallback={props.autoStopCallback.bind(this)}
+            autoStop={props.autoStop}
             />
         </>
     );
