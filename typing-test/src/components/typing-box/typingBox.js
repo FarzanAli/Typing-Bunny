@@ -13,27 +13,29 @@ export default class TypingBox extends Component {
   componentDidMount() {
     if(this.props.input.length < this.props.typingText.length && document.getElementsByClassName("settings-container").item(0) === null){
       document.addEventListener('keydown', (event) => {
-        // if(this.props.errors === 0){
-        //   this.keyboardInput(event.key);
-        // }
-        // else if(this.props.errors > 0 && parseInt(document.getElementsByClassName("letter-active").item(0).id) + 1 !== document.getElementsByClassName("letter-active").item(0).parentElement.children.length - 1){
-        //   this.keyboardInput(event.key);
-        // }
-        if(this.props.autoStop){
-          if(this.props.errors === 0 || event.key === "Backspace"){
+        if(!this.props.box){
+          // if(this.props.errors === 0){
+          //   this.keyboardInput(event.key);
+          // }
+          // else if(this.props.errors > 0 && parseInt(document.getElementsByClassName("letter-active").item(0).id) + 1 !== document.getElementsByClassName("letter-active").item(0).parentElement.children.length - 1){
+          //   this.keyboardInput(event.key);
+          // }
+          if(this.props.autoStop){
+            if(this.props.errors === 0 || event.key === "Backspace"){
+              this.keyboardInput(event.key);
+            }
+          }
+          else{
             this.keyboardInput(event.key);
           }
+          let newKeys = this.state.keys;
+          newKeys.push(event.key)
+          this.setState({keys: newKeys}, () => {
+            if(this.state.keys[this.state.keys.length - 2] === "Control"){
+              this.props.inputCallback(this.state.keys)            
+            }
+          });
         }
-        else{
-          this.keyboardInput(event.key);
-        }
-        let newKeys = this.state.keys;
-        newKeys.push(event.key)
-        this.setState({keys: newKeys}, () => {
-          if(this.state.keys[this.state.keys.length - 2] === "Control"){
-            this.props.inputCallback(this.state.keys)            
-          }
-        });
       });
       document.addEventListener('keyup', (event) => {
         let newKeys = this.state.keys
@@ -43,7 +45,7 @@ export default class TypingBox extends Component {
           }
         }
         this.setState({keys: newKeys})
-      })
+      });
     }
   }
 

@@ -24,6 +24,10 @@ let Toggle = (props) => {
         if(props.title === "Auto-Stop"){
             props.autoStopCallback(document.getElementsByClassName(props.title + "-toggle").item(0).checked)
         }
+
+        if(props.title === "Format"){
+            props.boxCallback(document.getElementsByClassName(props.title + "-toggle").item(1).checked);
+        }
     }
 
     const [boop] = useSound(boopOn);
@@ -33,6 +37,10 @@ let Toggle = (props) => {
     }
     else if(props.title === "Auto-Stop"){
         props.toggle[0].checked = props.autoStop;
+    }
+    else if(props.title === "Format"){
+        props.toggle[0].checked = !props.box;
+        props.toggle[1].checked = props.box
     }
     return(
         <div className="toggle-container">

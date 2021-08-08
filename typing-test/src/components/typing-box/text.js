@@ -2,7 +2,6 @@ import React from 'react';
 import './text.css';
 
 let Text = (props) => {
-
   let wordArray = [];
   if (props.typingText.length === 1) {
     wordArray.push(props.typingText[0]);

@@ -1,0 +1,21 @@
+.box-container{
+    border-radius: 6px;
+    background-color: var(--shade-1);
+    box-shadow: var(--box-shadow);
+    
+    display: flex;
+    justify-content: center;
+}
+
+.input-box{
+    width: 93%;
+    justify-content: space-between;
+    margin: 17px;
+    height: 30px;
+    border: 2px solid var(--ui-color);
+    border-radius: 4px;
+    background-color: transparent;
+    font-size: var(--text-font);
+    caret-color: var(--text-color);
+    color: var(--text-color);
+}

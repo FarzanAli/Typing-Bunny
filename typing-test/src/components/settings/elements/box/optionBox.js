@@ -14,6 +14,8 @@ let OptionBox = (props) => {
                 mute={props.mute}
                 autoStopCallback={props.autoStopCallback}
                 autoStop={props.autoStop}
+                boxCallback={props.boxCallback}
+                box={props.box}
                 />
             )}
             {props.palette.length !== 0 && (

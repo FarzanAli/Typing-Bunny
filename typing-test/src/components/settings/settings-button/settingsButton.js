@@ -19,6 +19,8 @@ let SettingsButton = (props) => {
             mute={props.mute}
             autoStopCallback={props.autoStopCallback.bind(this)}
             autoStop={props.autoStop}
+            boxCallback={props.boxCallback.bind(this)}
+            box={props.box}
             />
         </>
     );

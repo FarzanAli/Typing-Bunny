@@ -6,6 +6,7 @@ import ToggleLight from './components/toggleLight.js';
 import Audio from './components/audio/audio.js';
 import Header from './components/header/header.js';
 import TypingBox from './components/typing-box/typingBox.js';
+import Box from './components/typing-box/box/box.js';
 
 export default class Main extends Component{
   
@@ -23,7 +24,8 @@ export default class Main extends Component{
       wpm: 0,
       accuracy: 0,
       handledErrors: [],
-      mute: false
+      mute: false,
+      box: true
     };
   }
 
@@ -101,7 +103,7 @@ export default class Main extends Component{
     else{
       this.setState({
         input: this.state.input + data
-      });
+      }, () => console.log(this.state.input));
     }
   }
 
@@ -150,6 +152,14 @@ export default class Main extends Component{
     this.setState({autoStop: data});
   }
 
+  boxCallback(data){
+    this.setState({box: data});
+  }
+
+  boxInputCallback(data){
+    this.setState({input: data}, () => console.log(this.state.input))
+  }
+
   render(){
     return(
       <>
@@ -157,6 +167,8 @@ export default class Main extends Component{
         mute={this.state.mute}
         autoStopCallback={this.autoStopCallback.bind(this)}
         autoStop={this.state.autoStop}
+        boxCallback={this.boxCallback.bind(this)}
+        box={this.state.box}
         />
         <div className="minibar-container">
           <Audio
@@ -182,12 +194,17 @@ export default class Main extends Component{
           runTimer={this.state.runTimer}
           errors={this.state.errors}
           autoStop={this.state.autoStop}
+          box={this.state.box}
 
           toggleRunTimerCallback={this.toggleRunTimerCallback.bind(this)}
           inputCallback={this.inputCallback.bind(this)}
           errorsCallback={this.errorsCallback.bind(this)}
           handledErrorsCallback={this.handledErrorsCallback.bind(this)}
           />
+
+          {this.state.box === true && <Box
+          boxInputCallback={this.boxInputCallback.bind(this)}
+          />}
         </div>
       </>
     );

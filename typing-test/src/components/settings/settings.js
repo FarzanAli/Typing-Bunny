@@ -18,9 +18,11 @@ let Settings = (props) => {
                 <div className="settings-option-column">
                     <OptionsBox 
                     title={"Format"}
-                    toggle={[{name: "Highlight Text", checked: "checked"}, {name: "Typing Box", checked: ""}]}
+                    toggle={[{name: "Highlight Text", checked: ""}, {name: "Typing Box", checked: "checked"}]}
                     palette={[]}
                     mute={props.mute}
+                    boxCallback={props.boxCallback.bind(this)}
+                    box={props.box}
                     />
                     <OptionsBox
                     title={"Theme"}

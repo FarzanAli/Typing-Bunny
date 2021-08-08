@@ -139,6 +139,7 @@ body {
   border-radius: 1.7%;
   background-color: var(--shade-1);
   box-shadow: var(--box-shadow);
+  margin-bottom: 10px;
 }
 
 .typing-text{
