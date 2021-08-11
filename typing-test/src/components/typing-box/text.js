@@ -101,7 +101,9 @@ let Text = (props) => {
       props.handledErrorsCallback(props.input.length - 1);
     }
     else if(props.input[props.input.length - 1] === props.typingText[props.input.length - 1]){
-      document.getElementsByClassName("letter-active").item(0).className = "letter-finished";
+      if(document.getElementsByClassName("letter-active").length > 0){
+        document.getElementsByClassName("letter-active").item(0).className = "letter-finished";
+      }
     }
   }
   return (

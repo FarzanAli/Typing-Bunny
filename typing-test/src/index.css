@@ -30,6 +30,7 @@ html[theme="light"][neumorphism="true"]{
   --color-hover: rgb(90, 90, 90);
   --options-color: #ececec;
   --icon-color-hover: #505050;
+  --box-color: rgb(195, 195, 195);
 }
 
 html[theme="dark"][neumorphism="true"]{
@@ -47,6 +48,7 @@ html[theme="dark"][neumorphism="true"]{
   --color-hover: rgba(255, 255, 255, 0.8);
   --options-color: #ececec;
   --icon-color-hover: #c5c5c5;
+  --box-color: rgb(65, 65, 65);
 }
 
 html[theme="light"][neumorphism="false"]{
@@ -63,6 +65,7 @@ html[theme="light"][neumorphism="false"]{
   --color-hover: rgb(90, 90, 90);
   --options-color: #ececec;
   --icon-color-hover: #505050;
+  --box-color: rgb(195, 195, 195);
 }
 
 html[theme="dark"][neumorphism="false"]{
@@ -79,6 +82,7 @@ html[theme="dark"][neumorphism="false"]{
   --color-hover: rgba(255, 255, 255, 0.8);
   --options-color: #ececec;
   --icon-color-hover: #c5c5c5;
+  --box-color: rgb(65, 65, 65);
 }
 
 body {

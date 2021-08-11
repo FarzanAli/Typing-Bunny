@@ -11,53 +11,53 @@ export default class TypingBox extends Component {
   }
 
   componentDidMount() {
-    if(this.props.input.length < this.props.typingText.length && document.getElementsByClassName("settings-container").item(0) === null){
-      document.addEventListener('keydown', (event) => {
-        if(!this.props.box){
-          // if(this.props.errors === 0){
-          //   this.keyboardInput(event.key);
-          // }
-          // else if(this.props.errors > 0 && parseInt(document.getElementsByClassName("letter-active").item(0).id) + 1 !== document.getElementsByClassName("letter-active").item(0).parentElement.children.length - 1){
-          //   this.keyboardInput(event.key);
-          // }
-          if(this.props.autoStop){
-            if(this.props.errors === 0 || event.key === "Backspace"){
-              this.keyboardInput(event.key);
-            }
-          }
-          else{
+    document.addEventListener('keydown', (event) => {
+      if(this.props.input.length < this.props.typingText.length){
+        // if(this.props.errors === 0){
+        //   this.keyboardInput(event.key);
+        // }
+        // else if(this.props.errors > 0 && parseInt(document.getElementsByClassName("letter-active").item(0).id) + 1 !== document.getElementsByClassName("letter-active").item(0).parentElement.children.length - 1){
+        //   this.keyboardInput(event.key);
+        // }
+        if(this.props.autoStop){
+          if(this.props.errors === 0 || event.key === "Backspace"){
             this.keyboardInput(event.key);
           }
-          let newKeys = this.state.keys;
-          newKeys.push(event.key)
-          this.setState({keys: newKeys}, () => {
-            if(this.state.keys[this.state.keys.length - 2] === "Control"){
-              this.props.inputCallback(this.state.keys)            
-            }
-          });
         }
-      });
-      document.addEventListener('keyup', (event) => {
-        let newKeys = this.state.keys
-        for(let i = 0; i < newKeys.length; i++){
-          if(newKeys[i] === event.key){
-            newKeys.splice(i, 1);
+        else{
+          this.keyboardInput(event.key);
+        }
+        let newKeys = this.state.keys;
+        newKeys.push(event.key)
+        this.setState({keys: newKeys}, () => {
+          if(this.state.keys[this.state.keys.length - 2] === "Control"){
+            this.props.inputCallback(this.state.keys)            
           }
+        });
+      }
+    });
+    document.addEventListener('keyup', (event) => {
+      let newKeys = this.state.keys
+      for(let i = 0; i < newKeys.length; i++){
+        if(newKeys[i] === event.key){
+          newKeys.splice(i, 1);
         }
-        this.setState({keys: newKeys})
-      });
-    }
+      }
+      this.setState({keys: newKeys})
+    });
   }
 
   keyboardInput(data) {
-    if (data === "Backspace" && this.props.input.length < this.props.typingText.length) {
+    if (data === "Backspace" && this.props.input.length < this.props.typingText.length && !this.props.box) {
       this.props.inputCallback(data);
     }
     else if (data.length === 1 && this.props.input.length < this.props.typingText.length) {
       if (this.props.input.length === 0) {
         this.props.toggleRunTimerCallback(true);
       }
-      this.props.inputCallback(data);
+      if(!this.props.box){
+        this.props.inputCallback(data);
+      }
     }
     if(this.props.input.length === this.props.typingText.length && this.props.runTimer){
       this.props.toggleRunTimerCallback(false);
@@ -81,6 +81,7 @@ export default class TypingBox extends Component {
         input={this.props.input}
         typingText={this.props.typingText}
         handledErrors={this.props.handledErrors}
+
         runTimer={this.props.runTimer}
         handledErrorsCallback={this.props.handledErrorsCallback}
         />

@@ -25,7 +25,8 @@ export default class Main extends Component{
       accuracy: 0,
       handledErrors: [],
       mute: false,
-      box: true
+      box: true,
+      wordArray: []
     };
   }
 
@@ -157,7 +158,12 @@ export default class Main extends Component{
   }
 
   boxInputCallback(data){
-    this.setState({input: data}, () => console.log(this.state.input))
+    if(this.state.input.length < this.state.typingText.length){
+      this.setState({input: data});
+    }
+    if(this.state.input.length + 1 >= this.state.typingText.length){
+      this.toggleRunTimerCallback(false);
+    }
   }
 
   render(){
@@ -195,7 +201,7 @@ export default class Main extends Component{
           errors={this.state.errors}
           autoStop={this.state.autoStop}
           box={this.state.box}
-
+          
           toggleRunTimerCallback={this.toggleRunTimerCallback.bind(this)}
           inputCallback={this.inputCallback.bind(this)}
           errorsCallback={this.errorsCallback.bind(this)}
@@ -203,7 +209,9 @@ export default class Main extends Component{
           />
 
           {this.state.box === true && <Box
+          input={this.state.input}
           boxInputCallback={this.boxInputCallback.bind(this)}
+          activeWord={this.state.activeWord}
           />}
         </div>
       </>

@@ -12,7 +12,7 @@
     justify-content: space-between;
     margin: 17px;
     height: 30px;
-    border: 2px solid var(--ui-color);
+    border: 2px solid var(--box-color);
     border-radius: 4px;
     background-color: transparent;
     font-size: var(--text-font);

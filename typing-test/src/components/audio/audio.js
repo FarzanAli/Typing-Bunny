@@ -8,7 +8,7 @@ let Audio = (props) => {
 
     const [mute, setMute] = useState(false);
     const [muteSound] = useSound(MuteSound);
-
+    
     useEffect(() => {
         props.muteCallback(mute);
     }, [mute]);
