@@ -56,7 +56,10 @@ export default class Main extends Component{
     while(document.getElementsByClassName("letter-finished").length > 0){
       document.getElementsByClassName("letter-finished").item(0).className = "letter";
     }
-    document.getElementsByClassName("word").item(0).children[0].className = "letter-active"
+    document.getElementsByClassName("word").item(0).children[0].className = "letter-active";
+    if(document.getElementsByClassName("input-box").item(0) !== null){
+      document.getElementsByClassName("input-box").item(0).disabled = false; 
+    }
   }
 
   startTimer(){
@@ -200,6 +203,7 @@ export default class Main extends Component{
           accuracy={this.state.accuracy}
           handlePasteCallback={this.handlePasteCallback.bind(this)}
           handleNextTextCallback={this.handleNextTextCallback.bind(this)}
+          restartCallback={this.resetTest.bind(this)}
           />
           
           <TypingBox

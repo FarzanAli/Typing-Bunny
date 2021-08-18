@@ -12,6 +12,11 @@
   margin-bottom: 10px;
 }
 
+.header-buttons-container{
+  display: flex;
+  justify-self: space-between;
+}
+
 .stats-container{
   width: 250px;
   border-radius: 6px;
@@ -22,7 +27,7 @@
   color: var(--text-color);
 }
 
-.paste-container{
+.paste-container, .next-container, .restart-container{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +38,7 @@
   border-radius: 6px;
   box-shadow: var(--box-shadow);
 }
-.paste-container:hover{
+.paste-container:hover, .next-container:hover, .restart-container:hover{
   width: 57px;
   height: 57px;
   border: 1.5px solid var(--shade-1);
@@ -41,7 +46,7 @@
   /* transition: box-shadow 0.4s; */
 }
 
-.paste-container:active{
+.paste-container:active, .next-container:active, .restart-container:active{
   box-shadow: var(--box-shadow-inset);
 }
 
@@ -49,33 +54,6 @@
   background-color: var(--hover-color);
   transition: background-color 0.2s;
 } */
-
-.next-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: absolute;
-  margin-left: 75px;
-  width: 60px;
-  height: 60px;
-  background-color: var(--shade-1);
-  border-radius: 6px;
-
-  box-shadow: var(--box-shadow);
-}
-
-.next-container:hover{
-  width: 57px;
-  height: 57px;
-  border: 1.5px solid var(--shade-1);
-  box-shadow: var(--box-shadow), var(--box-shadow-inset);
-  /* transition: box-shadow 0.4s; */
-}
-
-.next-container:active{
-  box-shadow: var(--box-shadow-inset);
-}
 
 /* .next-container:hover{
   background-color: var(--hover-color);
