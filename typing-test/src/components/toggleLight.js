@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { FaMoon } from 'react-icons/fa';
+import { IoSunny } from 'react-icons/io5';
 import useSound from 'use-sound';
 import LightSwitchOn from './audio/light-switch/light-switch-on.mp3';
 import LightSwitchOff from './audio/light-switch/light-switch-off.mp3';
+
 let ToggleLight = (props) => {
     const [isOn, setIsOn] = useState(false);
     const [playOn] = useSound(LightSwitchOn, {playbackRate: 1.2});
@@ -24,7 +26,8 @@ let ToggleLight = (props) => {
 
     return(
         <button type="button" className="test" onClick={() => {setIsOn(!isOn); if(!props.mute) isOn ? playOn() : playOff()}}>
-            <FaMoon style={{width: `95%`, height: `95%`}}/>
+            {isOn === false && <FaMoon style={{width: `95%`, height: `95%`}}/>}
+            {isOn && <IoSunny style={{width: `100%`, height: `100%`}}/>}
         </button>
     );
 }
