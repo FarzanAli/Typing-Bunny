@@ -13,12 +13,6 @@ export default class TypingBox extends Component {
   componentDidMount() {
     document.addEventListener('keydown', (event) => {
       if(this.props.input.length < this.props.typingText.length){
-        // if(this.props.errors === 0){
-        //   this.keyboardInput(event.key);
-        // }
-        // else if(this.props.errors > 0 && parseInt(document.getElementsByClassName("letter-active").item(0).id) + 1 !== document.getElementsByClassName("letter-active").item(0).parentElement.children.length - 1){
-        //   this.keyboardInput(event.key);
-        // }
         if(this.props.autoStop){
           if(this.props.errors === 0 || event.key === "Backspace"){
             this.keyboardInput(event.key);
@@ -62,7 +56,6 @@ export default class TypingBox extends Component {
     if(this.props.input.length === this.props.typingText.length && this.props.runTimer){
       this.props.toggleRunTimerCallback(false);
     }
-
     let errors = 0;
     for (let i = 0; i < this.props.input.length; i++) {
       if (this.props.input[i] !== this.props.typingText[i]) {

@@ -17,15 +17,18 @@ export default class Main extends Component{
       typingText: ` `,
       sampleTexts: [`"Do not go gentle into that good night; Old age should burn and rave at close of day. Rage, rage against the dying of the light." -Dylan Thomas, as quoted by Professor Brand`,
                     `"We are what we repeatedly do. Excellence, then, is not an act, but a habit" - Aristotle`,
-                    `"Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking." -Steve Jobs`],
-      sampleTextsIndex: 0,
+                    `"Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking." -Steve Jobs`,
+                    `Based on the desire for total mobility and the serious physical pursuit of religious freedom, the auto drove mankind further than the wheel and in remote areas even today, it is forbidden as a device too suspect for human conveyance.`,
+                    `The quick brown fox jumps over the lazy dog`,
+
+                  ],
       runTimer: false,
       seconds: 0,
       wpm: 0,
       accuracy: 0,
       handledErrors: [],
       mute: false,
-      box: true,
+      box: false,
       wordArray: []
     };
   }
@@ -104,7 +107,7 @@ export default class Main extends Component{
     else{
       this.setState({
         input: this.state.input + data
-      }, () => console.log(this.state.input));
+      });
     }
   }
 
@@ -131,17 +134,10 @@ export default class Main extends Component{
   }
 
   handleNextTextCallback(){
-    if(this.state.typingText.length === 0){
-      this.setState({
-        typingText: this.state.sampleTexts[0]
-      });
-    }
-    else{
-      this.setState({
-        typingText: this.state.sampleTexts[this.state.sampleTextsIndex],
-        sampleTextsIndex: (this.state.sampleTextsIndex === this.state.sampleTexts.length - 1) ? 0 : this.state.sampleTextsIndex + 1
-      });
-    }
+    const random = Math.floor(Math.random() * (this.state.sampleTexts.length - 1)) + 1
+    this.setState({
+      typingText: this.state.sampleTexts[random] === this.state.typingText ? (this.state.sampleTexts[random] === this.state.sampleTexts[this.state.sampleTexts.length - 1] ? (this.state.sampleTexts[random - 1]) : this.state.sampleTexts[random + 1]) : this.state.sampleTexts[random]
+    });
     this.resetTest();
   }
 
@@ -159,10 +155,24 @@ export default class Main extends Component{
 
   boxInputCallback(data){
     if(this.state.input.length < this.state.typingText.length){
-      this.setState({input: data});
+      this.setState({input: data}, () => {
+        if(this.state.input.length === this.state.typingText.length){
+          this.toggleRunTimerCallback(false)
+          if(this.state.input[this.state.input.length - 1] !== this.state.typingText[this.state.typingText.length - 1]){
+            document.getElementsByClassName("letter").item(document.getElementsByClassName("letter").length - 1).className = "letter-error";
+          }
+          else{
+            document.getElementsByClassName("letter").item(document.getElementsByClassName("letter").length - 1).className = "letter-finished"
+          }
+          document.getElementsByClassName("input-box").item(0).disabled = true;
+        }
+      });
     }
-    if(this.state.input.length + 1 >= this.state.typingText.length){
-      this.toggleRunTimerCallback(false);
+    while(document.getElementsByClassName("letter-active").length > 0) {
+      document.getElementsByClassName("letter-active").item(0).className = "letter";
+    }
+    while(document.getElementsByClassName("letter-error").length > 0){
+      document.getElementsByClassName("letter-error").item(0).className = "letter";
     }
   }
 

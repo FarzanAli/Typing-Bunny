@@ -4,13 +4,14 @@
 
 .letter{
   display: inline-block;
-  /* border-radius: 3px; */
-  /* padding: 1px;  */
+  /* margin: 1px; */
 }
 
 .letter-active{
   display: inline-block;
   background-color: var(--cursor-color);
+  /* margin: 1px; */
+  border-radius: 2px;
   /* color: rgb(119, 119, 119); */
   /* animation: cursorBlinking 0.5s infinite; */
 }
@@ -22,7 +23,8 @@
 
 .letter-error{
   display: inline-block;
-  /* color: rgb(255, 52, 52) */
+  /* margin: 1px; */
+  /* border-radius: 1px; */
   background-color: var(--error-color);
 }
 

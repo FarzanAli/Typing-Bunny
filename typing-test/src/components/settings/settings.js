@@ -18,7 +18,7 @@ let Settings = (props) => {
                 <div className="settings-option-column">
                     <OptionsBox 
                     title={"Format"}
-                    toggle={[{name: "Highlight Text", checked: ""}, {name: "Typing Box", checked: "checked"}]}
+                    toggle={[{name: "Highlight Text", checked: "checked"}, {name: "Typing Box", checked: ""}]}
                     palette={[]}
                     mute={props.mute}
                     boxCallback={props.boxCallback.bind(this)}
@@ -36,7 +36,7 @@ let Settings = (props) => {
                     palette={
                         {
                             name:"error",
-                            array: [{color: "#8929ff9a", checked: "checked"}, {color: "#7EFF29", checked: ""}, {color: "#FFB300", checked: ""}, {color: "#00FFED", checked: ""}],
+                            array: [{color: "rgb(255, 52, 52)", checked: "checked"}, {color: "#7EFF29", checked: ""}, {color: "#FFB300", checked: ""}, {color: "#00FFED", checked: ""}],
                             cssVariable: '--error-color'
                         }
                     }
@@ -44,14 +44,15 @@ let Settings = (props) => {
                     />
                 </div>
                 <div className="settings-option-column">
-                    <OptionsBox
+                    {props.box === false && <OptionsBox
                         title={"Auto-Stop"}
-                        toggle={[{name:"Stop cursor from moving past word if error has been made.", checked: ""}]}
+                        toggle={[{name:"Stops cursor on error", checked: ""}]}
                         palette={[]}
                         mute={props.mute}
                         autoStopCallback={props.autoStopCallback.bind(this)}
                         autoStop={props.autoStop}
                     />
+                    }
                     <OptionsBox
                     title={"Cursor"}
                     toggle={[]}
