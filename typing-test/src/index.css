@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Source+Sans+Pro:ital,wght@0,900;1,900&display=swap');
 
 :root{
   --typing-box-width: 550px;
@@ -31,6 +32,7 @@ html[theme="light"][neumorphism="true"]{
   --options-color: #ececec;
   --icon-color-hover: #505050;
   --box-color: rgb(195, 195, 195);
+  --title-color: #a5a5a5;
 }
 
 html[theme="dark"][neumorphism="true"]{
@@ -49,6 +51,7 @@ html[theme="dark"][neumorphism="true"]{
   --options-color: #ececec;
   --icon-color-hover: #c5c5c5;
   --box-color: rgb(65, 65, 65);
+  --title-color: #4b4b4b;
 }
 
 html[theme="light"][neumorphism="false"]{
@@ -66,6 +69,7 @@ html[theme="light"][neumorphism="false"]{
   --options-color: #ececec;
   --icon-color-hover: #505050;
   --box-color: rgb(195, 195, 195);
+  --title-color: #a5a5a5;
 }
 
 html[theme="dark"][neumorphism="false"]{
@@ -83,14 +87,12 @@ html[theme="dark"][neumorphism="false"]{
   --options-color: #ececec;
   --icon-color-hover: #c5c5c5;
   --box-color: rgb(65, 65, 65);
+  --title-color: #4b4b4b;
 }
 
 body {
   font-family: 'Roboto Mono', monospace;
   background-color: var(--page-color);
-
-  display: flex;
-  justify-content: center;
 }
 
 .minibar-container{
@@ -127,7 +129,18 @@ body {
   transition: color 0.2s;
 }
 
-
+.title{
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 150px;
+  line-height: 50%;
+  font-size: 70px;
+  display: flex;
+  align-items: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: var(--title-color);
+}
 
 .main-content{
   height: 500px;

@@ -7,6 +7,7 @@ import Audio from './components/audio/audio.js';
 import Header from './components/header/header.js';
 import TypingBox from './components/typing-box/typingBox.js';
 import Box from './components/typing-box/box/box.js';
+import Bunny from './components/img/bunnyboi.svg';
 
 export default class Main extends Component{
   
@@ -182,51 +183,58 @@ export default class Main extends Component{
   render(){
     return(
       <>
-        <SettingsButton
-        mute={this.state.mute}
-        autoStopCallback={this.autoStopCallback.bind(this)}
-        autoStop={this.state.autoStop}
-        boxCallback={this.boxCallback.bind(this)}
-        box={this.state.box}
-        />
-        <div className="minibar-container">
-          <Audio
-          muteCallback={this.muteCallback.bind(this)}
-          />
-          <ToggleLight
-          mute={this.state.mute}
-          />
+        <div className="title">
+          <img src={Bunny} height={"80%"} style={{paddingTop: "13px", marginRight: "-10px"}}/>
+          <p style={{display: "inline-block"}}>Typing Bunny</p>
         </div>
-        <div className="main-content">
-          <Header
-          wpm={this.state.wpm}
-          accuracy={this.state.accuracy}
-          handlePasteCallback={this.handlePasteCallback.bind(this)}
-          handleNextTextCallback={this.handleNextTextCallback.bind(this)}
-          restartCallback={this.resetTest.bind(this)}
-          />
-          
-          <TypingBox
-          input={this.state.input}
-          typingText={this.state.typingText}
-          seconds={this.state.seconds}
-          handledErrors={this.state.handledErrors}
-          runTimer={this.state.runTimer}
-          errors={this.state.errors}
+        
+        <div style={{display: "flex", justifyContent: "center"}}>
+          <SettingsButton
+          mute={this.state.mute}
+          autoStopCallback={this.autoStopCallback.bind(this)}
           autoStop={this.state.autoStop}
+          boxCallback={this.boxCallback.bind(this)}
           box={this.state.box}
-          
-          toggleRunTimerCallback={this.toggleRunTimerCallback.bind(this)}
-          inputCallback={this.inputCallback.bind(this)}
-          errorsCallback={this.errorsCallback.bind(this)}
-          handledErrorsCallback={this.handledErrorsCallback.bind(this)}
           />
+          <div className="minibar-container">
+            <Audio
+            muteCallback={this.muteCallback.bind(this)}
+            />
+            <ToggleLight
+            mute={this.state.mute}
+            />
+          </div>
+          <div className="main-content">
+            <Header
+            wpm={this.state.wpm}
+            accuracy={this.state.accuracy}
+            handlePasteCallback={this.handlePasteCallback.bind(this)}
+            handleNextTextCallback={this.handleNextTextCallback.bind(this)}
+            restartCallback={this.resetTest.bind(this)}
+            />
+            
+            <TypingBox
+            input={this.state.input}
+            typingText={this.state.typingText}
+            seconds={this.state.seconds}
+            handledErrors={this.state.handledErrors}
+            runTimer={this.state.runTimer}
+            errors={this.state.errors}
+            autoStop={this.state.autoStop}
+            box={this.state.box}
+            
+            toggleRunTimerCallback={this.toggleRunTimerCallback.bind(this)}
+            inputCallback={this.inputCallback.bind(this)}
+            errorsCallback={this.errorsCallback.bind(this)}
+            handledErrorsCallback={this.handledErrorsCallback.bind(this)}
+            />
 
-          {this.state.box === true && <Box
-          input={this.state.input}
-          boxInputCallback={this.boxInputCallback.bind(this)}
-          activeWord={this.state.activeWord}
-          />}
+            {this.state.box === true && <Box
+            input={this.state.input}
+            boxInputCallback={this.boxInputCallback.bind(this)}
+            activeWord={this.state.activeWord}
+            />}
+          </div>
         </div>
       </>
     );
