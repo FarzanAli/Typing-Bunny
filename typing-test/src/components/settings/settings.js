@@ -41,6 +41,8 @@ let Settings = (props) => {
                         }
                     }
                     mute={props.mute}
+                    errorsFilledCallback={props.errorsFilledCallback}
+                    errorsFilled={props.errorsFilled}
                     />
                 </div>
                 <div className="settings-option-column">
@@ -62,6 +64,8 @@ let Settings = (props) => {
                         cssVariable: '--cursor-color'
                     }}
                     mute={props.mute}
+                    cursorFilledCallback={props.cursorFilledCallback}
+                    cursorFilled={props.cursorFilled}
                     />
                 </div>
             </div>

@@ -30,7 +30,9 @@ export default class Main extends Component{
       handledErrors: [],
       mute: false,
       box: false,
-      wordArray: []
+      wordArray: [],
+      cursorFilled: false,
+      errorsFilled: false
     };
   }
 
@@ -70,8 +72,8 @@ export default class Main extends Component{
           seconds: this.state.seconds + 0.01,
           wpm: ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60) === Infinity ? 999:
                ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60) < 0 ? 0 : ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60),
-          accuracy: ((this.state.input.length - this.state.errors)/this.state.input.length)*100
-        })
+          accuracy: ((this.state.input.length - this.state.errors)/this.state.input.length)*100 < 0 ? 0 : ((this.state.input.length - this.state.errors)/this.state.input.length)*100
+        });
 
         if(this.state.runTimer === false){
           clearInterval(timer);
@@ -157,20 +159,37 @@ export default class Main extends Component{
     this.setState({box: data});
   }
 
-  boxInputCallback(data){
+  boxInputCallback(data, type){
     if(this.state.input.length < this.state.typingText.length){
-      this.setState({input: data}, () => {
-        if(this.state.input.length === this.state.typingText.length){
-          this.toggleRunTimerCallback(false)
-          if(this.state.input[this.state.input.length - 1] !== this.state.typingText[this.state.typingText.length - 1]){
-            document.getElementsByClassName("letter").item(document.getElementsByClassName("letter").length - 1).className = "letter-error";
+      if(type === "set"){
+        this.setState({input: this.state.input.slice(0, this.state.input.lastIndexOf(" ") + 1) + data}, () => {
+          // console.log(this.state.input)
+          if(this.state.input.length === this.state.typingText.length){
+            this.toggleRunTimerCallback(false)
+            if(this.state.input[this.state.input.length - 1] !== this.state.typingText[this.state.typingText.length - 1]){
+              document.getElementsByClassName("letter").item(document.getElementsByClassName("letter").length - 1).className = "letter-error";
+            }
+            else{
+              document.getElementsByClassName("letter").item(document.getElementsByClassName("letter").length - 1).className = "letter-finished"
+            }
+            document.getElementsByClassName("input-box").item(0).disabled = true;
           }
-          else{
-            document.getElementsByClassName("letter").item(document.getElementsByClassName("letter").length - 1).className = "letter-finished"
+        });
+      }
+      else if(type === "append"){
+        this.setState({input: this.state.input + data}, () => {
+          if(this.state.input.length === this.state.typingText.length){
+            this.toggleRunTimerCallback(false)
+            if(this.state.input[this.state.input.length - 1] !== this.state.typingText[this.state.typingText.length - 1]){
+              document.getElementsByClassName("letter").item(document.getElementsByClassName("letter").length - 1).className = "letter-error";
+            }
+            else{
+              document.getElementsByClassName("letter").item(document.getElementsByClassName("letter").length - 1).className = "letter-finished"
+            }
+            document.getElementsByClassName("input-box").item(0).disabled = true;
           }
-          document.getElementsByClassName("input-box").item(0).disabled = true;
-        }
-      });
+        });
+      }
     }
     while(document.getElementsByClassName("letter-active").length > 0) {
       document.getElementsByClassName("letter-active").item(0).className = "letter";
@@ -180,11 +199,30 @@ export default class Main extends Component{
     }
   }
 
+  cursorFilledCallback(data){
+    this.setState({cursorFilled: data}, () => {
+      if(document.getElementsByClassName("letter-active").length !== 0){
+        if(data){
+          document.getElementsByClassName("letter-active").item(0).style.backgroundColor = "transparent";
+          document.getElementsByClassName("letter-active").item(0).style.color = "var(--cursor-color)";
+        }
+        else{
+          document.getElementsByClassName("letter-active").item(0).style.backgroundColor = "var(--cursor-color)";
+          document.getElementsByClassName("letter-active").item(0).style.color = "transparent";
+        }
+      }
+    });
+  }
+
+  errorsFilledCallback(data){
+    this.setState({errorsFilled: data});
+  }
+
   render(){
     return(
       <>
         <div className="title">
-          <img src={Bunny} height={"80%"} style={{paddingTop: "13px", marginRight: "-10px"}}/>
+          <img src={Bunny} height={"80%"} style={{paddingTop: "13px", marginRight: "-10px", marginLeft: "15px"}}/>
           <p style={{display: "inline-block"}}>Typing Bunny</p>
         </div>
         
@@ -195,6 +233,10 @@ export default class Main extends Component{
           autoStop={this.state.autoStop}
           boxCallback={this.boxCallback.bind(this)}
           box={this.state.box}
+          cursorFilledCallback={this.cursorFilledCallback.bind(this)}
+          cursorFilled={this.state.cursorFilled}
+          errorsFilledCallback={this.errorsFilledCallback.bind(this)}
+          errorsFilled={this.state.errorsFilled}
           />
           <div className="minibar-container">
             <Audio
@@ -231,8 +273,8 @@ export default class Main extends Component{
 
             {this.state.box === true && <Box
             input={this.state.input}
+            typingText={this.state.typingText}
             boxInputCallback={this.boxInputCallback.bind(this)}
-            activeWord={this.state.activeWord}
             />}
           </div>
         </div>

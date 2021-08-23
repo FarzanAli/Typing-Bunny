@@ -21,6 +21,10 @@ let SettingsButton = (props) => {
             autoStop={props.autoStop}
             boxCallback={props.boxCallback.bind(this)}
             box={props.box}
+            cursorFilledCallback={props.cursorFilledCallback}
+            cursorFilled={props.cursorFilled}
+            errorsFilledCallback={props.errorsFilledCallback}
+            errorsFilled={props.errorsFilled}
             />
         </>
     );

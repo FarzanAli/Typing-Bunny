@@ -130,9 +130,6 @@ body {
 }
 
 .title{
-  left: 0;
-  top: 0;
-  width: 100%;
   height: 150px;
   line-height: 50%;
   font-size: 70px;
@@ -140,6 +137,12 @@ body {
   align-items: center;
   font-family: 'Source Sans Pro', sans-serif;
   color: var(--title-color);
+}
+
+@media screen and (max-width: 670px){
+  .title{
+    display: none;
+  }
 }
 
 .main-content{

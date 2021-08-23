@@ -33,6 +33,13 @@ let Text = (props) => {
     </div>
   ));
   // console.log(props.input.length > 0, props.input.length < props.typingText.length, props.runTimer)
+  if(props.input.length === 0){
+    if(document.getElementsByClassName("letter-error").length > 0){
+        for(let i = 0; i < document.getElementsByClassName("letter-error").length; i++){
+          document.getElementsByClassName("letter-error").item(i).className = "letter";
+        }
+    }
+  }
   if(props.input.length === 0 && document.getElementsByClassName("letter-active").length > 1 && props.runTimer){
     document.getElementsByClassName("letter-active").item(1).className = "letter";
   }
@@ -63,7 +70,7 @@ let Text = (props) => {
             } 
           }
           document.getElementsByClassName("word").item(i).children[j].className = "letter-active";
-          
+          // document.getElementsByClassName("letter-active").item(0).style.color = "red"
         }
         if(document.getElementsByClassName("word").item(i).children[j].className === "letter-error" && cursorIndex > props.input.length){
           document.getElementsByClassName("word").item(i).children[j].className = "letter";

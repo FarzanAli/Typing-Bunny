@@ -16,6 +16,10 @@ let OptionBox = (props) => {
                 autoStop={props.autoStop}
                 boxCallback={props.boxCallback}
                 box={props.box}
+                cursorFilledCallback={props.cursorFilledCallback}
+                cursorFilled={props.cursorFilled}
+                errorsFilledCallback={props.errorsFilledCallback}
+                errorsFilled={props.errorsFilled}
                 />
             )}
             {props.palette.length !== 0 && (

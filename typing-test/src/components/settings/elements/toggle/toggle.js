@@ -28,6 +28,14 @@ let Toggle = (props) => {
         if(props.title === "Format"){
             props.boxCallback(document.getElementsByClassName(props.title + "-toggle").item(1).checked);
         }
+
+        if(props.title === "Cursor"){
+            props.cursorFilledCallback(document.getElementsByClassName(props.title + "-toggle").item(0).checked);
+        }
+        
+        if(props.title === "Errors"){
+            props.errorsFilledCallback(document.getElementsByClassName(props.title + "-toggle").item(0).checked);
+        }
     }
 
     const [boop] = useSound(boopOn);
@@ -42,11 +50,16 @@ let Toggle = (props) => {
         props.toggle[0].checked = !props.box;
         props.toggle[1].checked = props.box
     }
+    else if(props.title === "Cursor"){
+        props.toggle[0].checked = props.cursorFilled;
+    }
+    else if(props.title === "Errors"){
+        props.toggle[0].checked = props.errorsFilled;
+    }
     return(
         <div className="toggle-container">
             {
-                props.toggle.map((object, idx) => (
-                    
+                props.toggle.map((object, idx) => (                    
                     <div key={idx}>
                         <label className="label-container">
                             <input className={props.title + "-toggle"} type="checkbox" defaultChecked={object.checked} id={idx} onChange={onChange} onClick={() => {if(!props.mute) boop()}}/>
