@@ -21,7 +21,9 @@ export default class Main extends Component{
                     `"Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking." -Steve Jobs`,
                     `Based on the desire for total mobility and the serious physical pursuit of religious freedom, the auto drove mankind further than the wheel and in remote areas even today, it is forbidden as a device too suspect for human conveyance.`,
                     `The quick brown fox jumps over the lazy dog`,
-
+                    `Studying is the main source of knowledge. Books are indeed never failing friends of man. For a mature mind, reading is the greatest source of pleasure and solace to distressed minds. The study of good books ennobles us and broadens our outlook. Therefore, the habit of reading should be cultivated.`,
+                    `Bitcoin is an electronic currency created back in January 2009. It is known to be decentralized electronic cash that does not rely on banks. It is the Number one cryptocurrency in the market.`,
+                    `Talent is never enough. With few exceptions the best players are the hard workers. It is rightly said that champions are not born, they are made. If talent alone could guarantee success over a long period of time, all talented sports persons would not waste their sweat training hard.`
                   ],
       runTimer: false,
       seconds: 0,

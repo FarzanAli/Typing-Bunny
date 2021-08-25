@@ -146,7 +146,8 @@ body {
 }
 
 .main-content{
-  height: 500px;
+  height: fit-content;
+  /* height: 500px; */
   margin-top: 10vh;
   display: flex;
   flex-flow: column;
@@ -186,4 +187,15 @@ html.transition *:after {
     --text-font: 25px;
     --text-inner-padding: 23px;
   }
-} 
+}
+
+@media only screen and (max-width: 1700px){
+  .title{
+    height: 130px;
+    font-size: 55px;
+  }
+  .main-content{
+    /* margin-top: 0px; */
+    height: fit-content;
+  }
+}
