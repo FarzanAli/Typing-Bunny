@@ -97,7 +97,7 @@ body {
 
 .minibar-container{
   z-index: 3;
-  position: absolute;
+  position: fixed;
   right: 25px;
   bottom: 25px;
   width: 45px;
@@ -140,9 +140,30 @@ body {
 }
 
 @media screen and (max-width: 670px){
-  .title{
-    display: none;
+  .title > p{
+    font-size: 30px;
   }
+  .title{
+    margin-left: -20px;
+    margin-top: -20px;
+  }
+  :root{
+    --typing-box-width: 298px;
+    --typing-box-height: 200px;
+    --text-font: 12px;
+    --text-inner-padding: 13px;
+  }
+  .minibar-container{
+    width: 35px;
+    height: 100px;
+    right: 10px;
+    bottom: 10px;
+  }
+
+}
+
+.coffee-container{
+  margin-left: 100px;
 }
 
 .main-content{
@@ -172,6 +193,30 @@ body {
   color: var(--text-color);
 }
 
+
+.title-button{
+  display: inline-block;
+}
+
+.title-button:link, .title-button:visited{
+  margin-left: 50px;
+  color: var(--icon-color);
+}
+
+.title-button:hover{
+  color: var(--icon-color-hover);
+  transition: color 0.2s;
+}
+
+a:link:active, a:visited:active{
+  color: var(--icon-color);
+}
+
+.title-buttons-container{
+  margin-left: 130px;
+}
+
+
 html.transition,
 html.transition *,
 html.transition *:before,
@@ -187,6 +232,7 @@ html.transition *:after {
     --text-font: 25px;
     --text-inner-padding: 23px;
   }
+  
 }
 
 @media only screen and (max-width: 1700px){
@@ -197,5 +243,15 @@ html.transition *:after {
   .main-content{
     /* margin-top: 0px; */
     height: fit-content;
+  }
+
+  .title-buttons-container{
+    margin-left: 80px;
+  }
+}
+
+@media screen and (max-width: 760px){
+  .title-buttons-container{
+    display: none;
   }
 }

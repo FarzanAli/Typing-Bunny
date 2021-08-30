@@ -53,6 +53,11 @@
     --settings-options-width: 700px;
 }
 
+@media screen and (max-width: 670px){
+    :root{
+        --settings-options-width: 335px;
+    }
+}
 
 .settings-button-container{
     position: absolute;

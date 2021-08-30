@@ -25,10 +25,10 @@ let ToggleLight = (props) => {
     });
 
     return(
-        <button type="button" className="test" onClick={() => {setIsOn(!isOn); if(!props.mute) isOn ? playOn() : playOff()}}>
-            {isOn === false && <FaMoon style={{width: `95%`, height: `95%`}}/>}
-            {isOn && <IoSunny style={{width: `100%`, height: `100%`}}/>}
-        </button>
+        <div onClick={() => {setIsOn(!isOn); if(!props.mute) isOn ? playOn() : playOff()}}>
+            {isOn === false && <FaMoon style={{width: `75%`, height: `75%`}}/>}
+            {isOn && <IoSunny style={{width: `83%`, height: `83%`}}/>}
+        </div>
     );
 }
 

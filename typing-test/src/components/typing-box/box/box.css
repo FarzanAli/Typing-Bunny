@@ -19,3 +19,9 @@
     caret-color: var(--text-color);
     color: var(--text-color);
 }
+
+@media screen and (max-width: 670px){
+    .input-box{
+        height: 20px;
+    }
+}

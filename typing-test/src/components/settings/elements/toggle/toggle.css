@@ -6,6 +6,13 @@
     --description-font-size: 16px;
 }
 
+@media screen and (max-width: 670px) {
+    :root{
+        --checkbox-size: 15px;
+        --description-font-size: 12px;
+    }
+}
+
 .toggle-container{
     width: fit-content;
     height: fit-content;
