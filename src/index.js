@@ -90,7 +90,7 @@ export default class Main extends Component{
           clearInterval(timer);
         }
 
-      }, 10);
+      }, 10); 
   }
 
   toggleRunTimerCallback(bool){
@@ -176,13 +176,38 @@ export default class Main extends Component{
         this.setState({input: this.state.input.slice(0, this.state.input.lastIndexOf(" ") + 1) + data}, () => {
           // console.log(this.state.input)
           if(this.state.input.length === this.state.typingText.length){
-            this.toggleRunTimerCallback(false)
             if(this.state.input[this.state.input.length - 1] !== this.state.typingText[this.state.typingText.length - 1]){
-              document.getElementsByClassName("letter").item(document.getElementsByClassName("letter").length - 1).className = "letter-error";
+              this.setState({
+                errors: this.state.errors + 1
+              }, () => {
+                this.setState({
+                  seconds: this.state.seconds + 0.01,
+                  wpm: ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60) === Infinity ? 999:
+                       ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60) < 0 ? 0 : ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60),
+                  accuracy: ((this.state.input.length - this.state.errors)/this.state.input.length)*100 < 0 ? 0 : ((this.state.input.length - this.state.errors)/this.state.input.length)*100
+                }, () => {
+                  this.toggleRunTimerCallback(false)
+                }); 
+              }) 
             }
             else{
-              document.getElementsByClassName("letter").item(document.getElementsByClassName("letter").length - 1).className = "letter-finished"
+              this.setState({
+                seconds: this.state.seconds + 0.01,
+                wpm: ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60) === Infinity ? 999:
+                    ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60) < 0 ? 0 : ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60),
+                accuracy: ((this.state.input.length - this.state.errors)/this.state.input.length)*100 < 0 ? 0 : ((this.state.input.length - this.state.errors)/this.state.input.length)*100
+              }, () => {
+                this.toggleRunTimerCallback(false)
+              });
             }
+            
+            
+            // if(this.state.input[this.state.input.length - 1] !== this.state.typingText[this.state.typingText.length - 1]){
+            //   document.getElementsByClassName("letter").item(document.getElementsByClassName("letter").length - 1).className = "letter-error";
+            // }
+            // else{
+            //   document.getElementsByClassName("letter").item(document.getElementsByClassName("letter").length - 1).className = "letter-finished"
+            // }
             document.getElementsByClassName("input-box").item(0).disabled = true;
           }
         });
@@ -202,12 +227,12 @@ export default class Main extends Component{
         });
       }
     }
-    while(document.getElementsByClassName("letter-active").length > 0) {
-      document.getElementsByClassName("letter-active").item(0).className = "letter";
-    }
-    while(document.getElementsByClassName("letter-error").length > 0){
-      document.getElementsByClassName("letter-error").item(0).className = "letter";
-    }
+    // while(document.getElementsByClassName("letter-active").length > 0) {
+    //   document.getElementsByClassName("letter-active").item(0).className = "letter";
+    // }
+    // while(document.getElementsByClassName("letter-error").length > 0){
+    //   document.getElementsByClassName("letter-error").item(0).className = "letter";
+    // }
   }
 
   cursorFilledCallback(data){
