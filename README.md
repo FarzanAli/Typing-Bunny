@@ -1,7 +1,7 @@
 [Typingbunny](https://www.typingbunny.com)
 
 
-![typingbunny](https://user-images.githubusercontent.com/56518530/135311418-cef881f9-fda6-4c62-a98f-eb4922a2196a.jpg)
+![image](https://user-images.githubusercontent.com/56518530/135312049-f6e1512a-c766-4af3-86c1-ea080c514250.png)
 
 
 # Getting Started with Create React App
