@@ -1,4 +1,4 @@
-Visit: https://www.typingbunny.com
+[Link to Typingbunny](https://www.typingbunny.com)
 
 
 ![typingbunny](https://user-images.githubusercontent.com/56518530/135311418-cef881f9-fda6-4c62-a98f-eb4922a2196a.jpg)
