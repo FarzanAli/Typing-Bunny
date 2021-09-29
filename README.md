@@ -1,7 +1,8 @@
-[Typingbunny](https://www.typingbunny.com)
+[Typingbunny](https://www.typingbunny.com) is a customizable typing test website.
 
 
-![image](https://user-images.githubusercontent.com/56518530/135312049-f6e1512a-c766-4af3-86c1-ea080c514250.png)
+![typingbunny](https://user-images.githubusercontent.com/56518530/135312158-4a9ee9f1-ce52-4658-9737-979082f3b01c.jpg)
+
 
 
 # Getting Started with Create React App
