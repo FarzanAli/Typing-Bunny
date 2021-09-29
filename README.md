@@ -1,4 +1,4 @@
-[Typingbunny](https://www.typingbunny.com) is a customizable typing test website.
+[Typingbunny](https://www.typingbunny.com) is a customizable typing test website
 
 
 ![typingbunny](https://user-images.githubusercontent.com/56518530/135312158-4a9ee9f1-ce52-4658-9737-979082f3b01c.jpg)
