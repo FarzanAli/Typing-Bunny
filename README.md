@@ -1,6 +1,9 @@
 Visit: https://www.typingbunny.com
 
 
+![typingbunny](https://user-images.githubusercontent.com/56518530/135311418-cef881f9-fda6-4c62-a98f-eb4922a2196a.jpg)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
