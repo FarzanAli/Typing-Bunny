@@ -2,7 +2,7 @@
 
 
 ![typingbunny](https://user-images.githubusercontent.com/56518530/135312158-4a9ee9f1-ce52-4658-9737-979082f3b01c.jpg)
-![image](https://user-images.githubusercontent.com/56518530/151610355-8ebcf331-ad68-45fd-ab95-3d97cc859ca1.png)
+![image](https://user-images.githubusercontent.com/56518530/151610500-b337887e-0525-4709-8f39-eb35b151e444.png)
 
 
 <img width="50%" alt="2021-06-28 (1)" src="https://user-images.githubusercontent.com/56518530/151607925-cffa1f21-bfd7-4ca8-927c-6b5eb6394f91.png">
