@@ -2,7 +2,7 @@
 
 
 ![typingbunny](https://user-images.githubusercontent.com/56518530/135312158-4a9ee9f1-ce52-4658-9737-979082f3b01c.jpg)
-![image](https://user-images.githubusercontent.com/56518530/151610801-5a0e047d-aef4-46ca-9ba2-a719a7ba9afb.png)
+![image](https://user-images.githubusercontent.com/56518530/151611544-e3232c38-2fd2-4118-bb22-3b2a4d8c2661.png)
 
 # Getting Started with Create React App
 
