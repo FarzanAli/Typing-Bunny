@@ -3,6 +3,7 @@
 
 ![typingbunny](https://user-images.githubusercontent.com/56518530/135312158-4a9ee9f1-ce52-4658-9737-979082f3b01c.jpg)
 
+<img width="191" alt="2021-06-28 (1)" src="https://user-images.githubusercontent.com/56518530/151607845-c6f48c8a-c634-48ad-b742-938e29f7f217.png">
 
 
 # Getting Started with Create React App
