@@ -4,11 +4,6 @@
 ![typingbunny](https://user-images.githubusercontent.com/56518530/135312158-4a9ee9f1-ce52-4658-9737-979082f3b01c.jpg)
 ![image](https://user-images.githubusercontent.com/56518530/151610801-5a0e047d-aef4-46ca-9ba2-a719a7ba9afb.png)
 
-
-<img width="50%" alt="2021-06-28 (1)" src="https://user-images.githubusercontent.com/56518530/151607925-cffa1f21-bfd7-4ca8-927c-6b5eb6394f91.png">
-
-![image](https://user-images.githubusercontent.com/56518530/151609777-853a4647-4cd8-4a1d-aec0-030c8bd090a0.png)
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
