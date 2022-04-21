@@ -16,8 +16,8 @@ export default class Main extends Component{
     super(props)
     this.state = {
       input: ``,
-      typingText: ` `,
-      sampleTexts: [`"Do not go gentle into that good night; Old age should burn and rave at close of day. Rage, rage against the dying of the light." -Dylan Thomas, as quoted by Professor Brand`,
+      typingText: `"Do not go gentle into that good night; Old age should burn and rave at close of day. Rage, rage against the dying of the light." -Dylan Thomas, as quoted by Professor Brand`,
+      sampleTexts: [``,`"Do not go gentle into that good night; Old age should burn and rave at close of day. Rage, rage against the dying of the light." -Dylan Thomas, as quoted by Professor Brand`,
                     `"We are what we repeatedly do. Excellence, then, is not an act, but a habit" - Aristotle`,
                     `"Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking." -Steve Jobs`,
                     `Based on the desire for total mobility and the serious physical pursuit of religious freedom, the auto drove mankind further than the wheel and in remote areas even today, it is forbidden as a device too suspect for human conveyance.`,
@@ -80,7 +80,7 @@ export default class Main extends Component{
 
     let timer = setInterval(() => {
       this.setState({
-          seconds: this.state.seconds + 0.01,
+          seconds: this.state.seconds + 0.05,
           wpm: ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60) === Infinity ? 999:
                ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60) < 0 ? 0 : ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60),
           accuracy: ((this.state.input.length - this.state.errors)/this.state.input.length)*100 < 0 ? 0 : ((this.state.input.length - this.state.errors)/this.state.input.length)*100
@@ -90,7 +90,7 @@ export default class Main extends Component{
           clearInterval(timer);
         }
 
-      }, 10); 
+      }, 50); 
   }
 
   toggleRunTimerCallback(bool){
@@ -157,7 +157,6 @@ export default class Main extends Component{
     });
     this.resetTest();
   }
-
   muteCallback(mute){
     this.setState({mute: mute});
   }
@@ -181,18 +180,18 @@ export default class Main extends Component{
                 errors: this.state.errors + 1
               }, () => {
                 this.setState({
-                  seconds: this.state.seconds + 0.01,
+                  seconds: this.state.seconds + 0.05,
                   wpm: ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60) === Infinity ? 999:
                        ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60) < 0 ? 0 : ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60),
                   accuracy: ((this.state.input.length - this.state.errors)/this.state.input.length)*100 < 0 ? 0 : ((this.state.input.length - this.state.errors)/this.state.input.length)*100
                 }, () => {
                   this.toggleRunTimerCallback(false)
                 }); 
-              }) 
+              })
             }
             else{
               this.setState({
-                seconds: this.state.seconds + 0.01,
+                seconds: this.state.seconds + 0.05,
                 wpm: ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60) === Infinity ? 999:
                     ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60) < 0 ? 0 : ((this.state.input.length - this.state.errors)/5)/(this.state.seconds/60),
                 accuracy: ((this.state.input.length - this.state.errors)/this.state.input.length)*100 < 0 ? 0 : ((this.state.input.length - this.state.errors)/this.state.input.length)*100
@@ -264,9 +263,9 @@ export default class Main extends Component{
             <a className="title-button" style={{marginLeft: "0px"}} href={"https://github.com/FarzanAli/custom-typing-test"}>
               <FaGithub  style={{width: "50%", height: "50%"}}/>
             </a>
-            <a className="title-button" href={"https://www.linkedin.com/in/farzan-ali/"}>
+            {/* <a className="title-button" href={"https://www.linkedin.com/in/farzan-ali/"}>
               <FaLinkedin style={{width: "50%", height: "50%"}}/>
-            </a>
+            </a> */}
           </div>
         </div>
         
