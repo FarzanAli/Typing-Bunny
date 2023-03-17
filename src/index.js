@@ -170,6 +170,9 @@ export default class Main extends Component{
   }
 
   boxInputCallback(data, type){
+    if(this.state.input.length == 0){
+      this.toggleRunTimerCallback(true)
+    }
     if(this.state.input.length < this.state.typingText.length){
       if(type === "set"){
         this.setState({input: this.state.input.slice(0, this.state.input.lastIndexOf(" ") + 1) + data}, () => {

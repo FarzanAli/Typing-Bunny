@@ -46,7 +46,7 @@ export default class TypingBox extends Component {
       this.props.inputCallback(data);
     }
     else if (data.length === 1 && this.props.input.length < this.props.typingText.length) {
-      if (this.props.input.length === 0) {
+      if (this.props.input.length === 0 && this.props.box == false) {
         this.props.toggleRunTimerCallback(true);
       }
       if(!this.props.box){
