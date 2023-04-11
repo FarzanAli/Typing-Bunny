@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Source+Sans+Pro:ital,wght@0,900;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Source+Sans+Pro:ital,wght@0,900;1,900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap');
 
 :root{
   --typing-box-width: 550px;
@@ -33,6 +34,8 @@ html[theme="light"][neumorphism="true"]{
   --icon-color-hover: #505050;
   --box-color: rgb(195, 195, 195);
   --title-color: #a5a5a5;
+  --account-text-color: var(--title-color);
+
 }
 
 html[theme="dark"][neumorphism="true"]{
@@ -52,6 +55,7 @@ html[theme="dark"][neumorphism="true"]{
   --icon-color-hover: #c5c5c5;
   --box-color: rgb(65, 65, 65);
   --title-color: #4b4b4b;
+  --account-text-color: #bfbfbf;
 }
 
 html[theme="light"][neumorphism="false"]{
@@ -70,6 +74,8 @@ html[theme="light"][neumorphism="false"]{
   --icon-color-hover: #505050;
   --box-color: rgb(195, 195, 195);
   --title-color: #a5a5a5;
+  --account-text-color: var(--title-color);
+  
 }
 
 html[theme="dark"][neumorphism="false"]{
@@ -88,6 +94,7 @@ html[theme="dark"][neumorphism="false"]{
   --icon-color-hover: #c5c5c5;
   --box-color: rgb(65, 65, 65);
   --title-color: #4b4b4b;
+  --account-text-color: #bfbfbf;
 }
 
 body {
@@ -101,7 +108,7 @@ body {
   right: 25px;
   bottom: 25px;
   width: 45px;
-  height: 120px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -136,6 +143,7 @@ body {
   display: flex;
   align-items: center;
   font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 900;
   color: var(--title-color);
 }
 
@@ -208,6 +216,13 @@ body {
   transition: color 0.2s;
 }
 
+a{
+  color: var(--icon-color);
+}
+a:hover{
+  color: var(--icon-color-hover);
+  transition: color 0.2s;
+}
 a:link:active, a:visited:active{
   color: var(--icon-color);
 }

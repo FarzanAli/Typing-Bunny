@@ -16,7 +16,7 @@ let Box = (props) => {
 
     return(
         <div className="box-container">
-            <input type="text" className="input-box" spellCheck="false" value={(!/\S/.test(props.input)) ? props.input : props.input.indexOf(" ") === -1 ? props.input : props.input.slice(props.input.lastIndexOf(" ") + 1, props.input.length)} onChange={(e) => boxInput(e)}></input>
+            <input autoFocus placeholder='Type here...' type="text" className="input-box" spellCheck="false" value={(!/\S/.test(props.input)) ? props.input : props.input.indexOf(" ") === -1 ? props.input : props.input.slice(props.input.lastIndexOf(" ") + 1, props.input.length)} onChange={(e) => boxInput(e)}></input>
         </div>
     );
 }

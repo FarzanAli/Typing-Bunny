@@ -1,0 +1,108 @@
+.account-container{
+    margin-top: -10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1280px;
+    padding: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 40px;
+    color: var(--text-color);
+}
+
+.stats{
+    margin-top: 50px;
+    align-self: flex-start;
+}
+
+.stats > .text{
+    font-size: 20px;
+    color: var(--text-color);
+    align-self: flex-start;
+    display: inline-block;
+}
+
+.text > .stat{
+    font-size: 35px;
+    font-weight: 600;
+    display: inline-block;
+    padding: 2px;
+}
+
+.graph-container{
+    width: 1024px;
+    /* width: 768px; */   
+}
+
+.graph{
+    padding-right: 20px;
+    padding-left: 20px
+}
+
+.account-container button{
+    background-color: transparent;
+    border: none;
+    margin: 30px;
+    margin-right: 50px;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 20px;
+    align-self: flex-end;
+    padding: 8px;
+    border-radius: 3px;
+}
+
+.account-container button:hover{
+    background-color: #7f7f7f;
+    color: rgb(230, 230, 230);
+    transition: background-color 0.2s;
+}
+
+.account-container .username{
+    padding-bottom: 75px;
+    align-self: flex-start;
+}
+
+@media (max-width: 1280px){
+    .account-container{
+        width: 1024px;
+    }
+}
+
+@media (max-width: 1024px){
+    .account-container{
+        width: 640px;
+    }
+    .graph-container{
+        width: 640px;
+    }
+    .graph{
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
+
+@media (max-width: 670px){
+    .stats{
+        align-self: center;
+    }
+    .account-container > .text{
+        align-self: center;
+    }
+    .graph-container{
+        width: 500px;
+    }
+    .account-container{
+        font-size: 20px;
+    }
+    .account-container > button{
+        align-self: center;
+    }
+    .account-container > .username{
+        align-self: center;
+    }
+}
+/* .graph{
+    width: 600px;
+} */
