@@ -1,6 +1,5 @@
 [Typingbunny](https://www.typingbunny.com) is a customizable typing test website
-
-
+![stats](https://github.com/FarzanAli/Typing-Bunny/assets/56518530/c75e9cbc-2e53-4d52-affa-b17c86a5a014)
 ![typingbunny](https://user-images.githubusercontent.com/56518530/135312158-4a9ee9f1-ce52-4658-9737-979082f3b01c.jpg)
 ![image](https://user-images.githubusercontent.com/56518530/151611544-e3232c38-2fd2-4118-bb22-3b2a4d8c2661.png)
 
