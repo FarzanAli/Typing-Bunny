@@ -111,13 +111,15 @@ export default class Main extends Component {
     score["timeStamp"] = d
     score["wpm"] = this.state.wpm
     score["accuracy"] = this.state.accuracy
+    score["seconds"] = this.state.seconds
+    score["typed"] = this.state.input
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(score)
     }
     console.log(score)
-    const response = await fetch('/test/score', options)
+    const response = await fetch('/api/test/score', options)
     console.log(response);
   }
 

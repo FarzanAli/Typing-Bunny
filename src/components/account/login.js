@@ -19,6 +19,7 @@ let Login = (props) => {
     const notifyUnexpected = () => toast.error('Unexpected error')
     const notifyInvalidEmail = () => toast.error('Invalid email')
     const notifyInvalidCredentials = () => toast.error('Invalid credentials')
+    const nonExistent = () => toast.error('Account does not exist')
     var usernameRegex = /^[a-zA-Z0-9]+$/;
 
     const validateEmail = (email) => {
@@ -39,7 +40,6 @@ let Login = (props) => {
             toast.error('Passwords dont match')
             submittable = false
         }
-        console.log(usernameRegex.test(username))
         if(usernameRegex.test(username) == false){
             toast.error('Username can only contain alphanumeric characters')
             submittable = false
@@ -64,7 +64,7 @@ let Login = (props) => {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data)
         }
-        const response = await fetch('/user/signup', options)
+        const response = await fetch('/api/user/signup', options)
         if(response.status === 202){
             notifyUE()
 
@@ -101,21 +101,27 @@ let Login = (props) => {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data)
         }
-        fetch('/user/login', options)
+        fetch('/api/user/login', options)
         .then((response) => {
             // const response = await fetch('/user/login', options)
+            console.log(response.status)
             if(response.status === 202){
                 props.handleLogin()
+                return response.json()
             }
             else if(response.status === 203){
                 notifyInvalidCredentials()
             }
+            else if(response.status === 204){
+                nonExistent()
+            }
             else{
                 notifyUnexpected()
             }
-            return response.json()
         }).then((data) => {
             props.setCredentials(data)
+        }).catch((error) => {
+            console.log(error)
         })
         
     }
